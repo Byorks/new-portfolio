@@ -1,0 +1,107 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Saira:ital,wght@0,100..900;1,100..900&display=swap');
+@import "tailwindcss";
+
+/*  ---Entendendo preferes-color-scheme---
+  Essa query vai perguntar se o usuário está com o SO no modo claro ou escuro, podemos configurar então para que ele responda de acordo com essa preferência
+
+  exemplo:
+  // Esse é o que está como padrão
+  body {
+    background: white;
+  }
+
+  Mas caso o SO esteja no modo dark
+  @media (prefers-color-scheme: dark) {
+    background: black;
+  }
+
+  Se o padrão for o tema escuro, só mudamos o color-scheme para light e o root com as cores escuras
+  Nesse caso não necessitamos de um botão para mudar a cor, no entanto o usuário fica preso a cor do SO, melhor etão ter um botão
+*/
+
+:root {
+    /* Dark theme (default) */
+    --color-primary: oklch(0.6665 0.2032 297.13);
+    --color-secondary: #6c757d;
+    --color-background: oklch(0.2238 0.0404 289.27);
+    --color-surface: #2B2D42;
+    --color-text: #ffffff;
+    --color-text-secondary: #6c757d;
+    --color-border: #AEAECB;
+
+    --shadow-small: 0 1px 3px rgba(0, 0, 0, 0.12);
+    --shadow-medium: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --shadow-large: 0 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Caso vá fazer alternador manual */
+[data-theme="light"] {
+    --color-primary: oklch(0.6665 0.2032 297.13);
+    --color-secondary: #6c757d;
+    --color-background: oklch(95.514% 0.00011 271.152);
+    --color-surface: #343a40;
+    --color-text: #f8f9fa;
+    --color-text-secondary: #adb5bd;
+    --color-border: #495057;
+
+    --shadow-small: 0 1px 3px rgba(0, 0, 0, 0.3);
+    --shadow-medium: 0 4px 6px rgba(0, 0, 0, 0.3);
+    --shadow-large: 0 10px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Smooth theme transitions */
+* {
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+@theme {
+    --color-primary: var(--color-primary);
+    --color-secondary: var(--color-secondary);
+    --color-background: var(--color-background);
+    --color-surface: var(--color-surface);
+    --color-text: var(--color-text);
+    --color-text-secondary: var(--color-text-secondary);
+    --color-border: var(--color-border);
+
+
+    /* Tipografia */
+    --font-title: "Poppins", "Saira", sans-serif;
+    --font-body: 'DM Sans', "Inter", sans-serif, i-sans-serif, system-ui, ;
+}
+
+@layer base {
+    body {
+        background: var(--color-background);
+        color: var(--color-text);
+    }
+
+    h1, h2, h3, h4 {
+        font-size: var(--text-4xl);
+       font-family: var(--font-title) ;
+    }
+
+    a, p, button { 
+        @apply font-body
+    }
+
+}
+
+/* Use essa camada para classes mais complexas onde vc ainda almeje sobrescrever com classes utilitárias com card btn badge */
+@layer components {
+   
+}
+
+
+/* Automaticamente pega o valor do SO o usuário */
+@media (prefers-color-scheme: light) {
+    :root {
+        --color-primary: #0d6efd;
+        --color-secondary: #6c757d;
+        --color-background: #212529;
+        --color-surface: #343a40;
+        --color-text: #f8f9fa;
+        --color-text-secondary: #adb5bd;
+        --color-border: #495057;
+    }
+
+}

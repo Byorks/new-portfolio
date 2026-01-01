@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+Disallow: /login
+Disallow: /dashboard
+Disallow: /private/*   # se tiver rotas com prefixo
+
+Sitemap: https://seu-site.com/sitemap.xml   # opcional
