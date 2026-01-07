@@ -5,8 +5,8 @@ const HomePage = () => {
   return (
     <main>
       <Header />
-      <div className="m-7 border border-border bg-radial-[at_110%_-30%] from-[#584E93]  via-[#302B50] to-48% via-25% to-background rounded-sm">
-        <div className="min-h-screen"></div>      
+      <div className="m-4 sm:m-7 border border-border bg-radial-[at_110%_-30%] from-[#584E93]  via-[#302B50] to-48% via-25% to-background rounded-sm">
+        {/* <div className="min-h-screen"></div>       */}
         <Hero />        
       </div>
     </main>

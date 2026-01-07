@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Camada_1" data-name="Camada 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 34 34.26">
+  <polygon points="21.33 16.83 17.5 16.83 17.5 12.97 16.5 12.97 16.5 16.83 12.68 16.83 12.68 17.83 16.5 17.83 16.5 21.69 17.5 21.69 17.5 17.83 21.33 17.83 21.33 16.83" fill="none" stroke="#fff" stroke-miterlimit="10"/>
+  <path d="M33,10.85V1h-9.77" fill="none" stroke="#fff" stroke-miterlimit="10" stroke-width="2"/>
+  <path d="M10.77,1H1v9.85" fill="none" stroke="#fff" stroke-miterlimit="10" stroke-width="2"/>
+  <path d="M23.23,33.26h9.77v-9.85" fill="none" stroke="#fff" stroke-miterlimit="10" stroke-width="2"/>
+  <path d="M1,23.41v9.85h9.77" fill="none" stroke="#fff" stroke-miterlimit="10" stroke-width="2"/>
+</svg>

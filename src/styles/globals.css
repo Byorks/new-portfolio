@@ -22,7 +22,7 @@
 :root {
     /* Dark theme (default) */
     --color-primary: oklch(0.6665 0.2032 297.13);
-    --color-secondary: #6c757d;
+    --color-secondary: #333248;
     --color-background: oklch(0.2238 0.0404 289.27);
     --color-surface: #2B2D42;
     --color-text: #ffffff;

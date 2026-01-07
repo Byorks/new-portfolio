@@ -1,6 +1,6 @@
 const Header = () => {
    return (
-    <header className="bg-background/50 border border-border px-12 py-7 m-6 rounded-sm">
+    <header className="bg-background/50 border border-border px-6 sm:px-12 py-7 m-4 sm:m-7 rounded-sm">
         <nav>
             <ul className="flex gap-12">
                 <li>
