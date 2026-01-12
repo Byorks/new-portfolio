@@ -13,12 +13,9 @@ const Hero = () => {
   const firstPathRef = useRef(null);
   const firstPath2Ref = useRef(null);
   const secondSvgRef = useRef();
+  const secondPathRef = useRef();
   const thirdSvgRef = useRef();
   const fourthSvgRef = useRef();
-
-  const { flickerTl } = useFlicker({
-    ref: arrowRef,
-  });
 
   // Efeito de aparecer texto
   useGSAP(
@@ -26,7 +23,10 @@ const Hero = () => {
       // Selecionando paths
       const drawFirstPaths = firstSvgRef.current.querySelectorAll("path");
       const drawSecondPaths = secondSvgRef.current.querySelectorAll("path");
-     
+      const drawThirdPaths = thirdSvgRef.current.querySelectorAll("path");
+      const drawFourthPaths = fourthSvgRef.current.querySelectorAll("path");
+      const showThirdClipPath =
+        thirdSvgRef.current.querySelector("#clip0_2078_55 rect");
       // Cria o SplitText no elemento h1
       const titleSplit = new SplitText(titleRef.current, {
         type: "chars", // Divide apenas em caracteres (mais performático)
@@ -52,19 +52,23 @@ const Hero = () => {
       });
 
       // estado inicial do svg, não desenhado
-      gsap.set( [drawFirstPaths,drawSecondPaths], { drawSVG: "0% 0%" });
+      gsap.set(
+        [drawFirstPaths, drawSecondPaths, drawThirdPaths, drawFourthPaths],
+        { drawSVG: "0% 0%" }
+      );
 
-      
-
+      gsap.set([drawThirdPaths, drawFourthPaths], { opacity: 0 });
       // Rotação do +
-      gsap.set(firstPath2Ref.current, { rotation: 720 });
+      gsap.set([firstPath2Ref.current, secondPathRef.current], {
+        rotation: 720,
+      });
 
-      tl.to(firstPath2Ref.current, {
+      tl.to([firstPath2Ref.current, secondPathRef.current], {
         rotation: 370,
         duration: 0.5,
         ease: "none",
         svgOrigin: "17 17.13",
-      }).to(firstPath2Ref.current, {
+      }).to([firstPath2Ref.current, secondPathRef.current], {
         rotation: 360,
         duration: 0.15,
         ease: "power4.out",
@@ -76,16 +80,44 @@ const Hero = () => {
         drawSVG: "0% 100%",
         duration: 1.5,
         ease: "power2.out",
-      },);
+      });
 
-         // linhas do svg
-      tl.to(drawSecondPaths, {
+      // linhas do svg
+      tl.to(
+        drawSecondPaths,
+        {
+          drawSVG: "0% 100%",
+          duration: 1.5,
+          ease: "power2.out",
+        },
+        "<"
+      );
+      // "<" significa comece junto com a animação anterior
+
+      // Outra forma de animações em conjunto
+
+      tl.to([drawThirdPaths, drawFourthPaths], {
+        opacity: 1,
+        duration: 0.6,
+      });
+      tl.to(
+        showThirdClipPath,
+        {
+          attr: {
+            y: 0,
+            height: 100,
+          },
+          duration: 1,
+          ease: "power2.out",
+        },
+        "<"
+      );
+
+      tl.to([drawThirdPaths, drawFourthPaths], {
         drawSVG: "0% 100%",
         duration: 1.5,
         ease: "power2.out",
-      }, "<");
-
-      // "<" significa comece junto com a animação anterior
+      });
 
       // 1. Animação do título
       tl.to(titleSplit.chars, {
@@ -139,7 +171,7 @@ const Hero = () => {
   return (
     <section
       ref={containerRef}
-      className="min-h-dvh w-full border border-amber-100 flex flex-col justify-between p-6 sm:p-11"
+      className="min-h-[80vh] w-full border border-amber-100 flex flex-col justify-between p-6 sm:p-11"
     >
       <div className="flex justify-between w-full">
         <svg
@@ -236,6 +268,7 @@ const Hero = () => {
         </svg> */}
 
         <svg
+          ref={thirdSvgRef}
           width="32"
           height="32"
           viewBox="0 0 32 32"
@@ -250,7 +283,7 @@ const Hero = () => {
           </g>
           <defs>
             <clipPath id="clip0_2078_55">
-              <rect width="32" height="32" fill="white" />
+              <rect x="0" y="32" width="32" height="0" fill="white" />
             </clipPath>
           </defs>
         </svg>
@@ -271,6 +304,7 @@ const Hero = () => {
       </div>
       <div className="flex justify-between w-full">
         <svg
+          ref={fourthSvgRef}
           width="32"
           height="32"
           viewBox="0 0 32 32"
@@ -313,7 +347,7 @@ const Hero = () => {
         >
           <p className="text-text-secondary">Scroll down</p>
           <img
-            className="bottom-arrow"
+            className="bottom-arrow "
             src={arrowBottom}
             alt="seta para baixo"
           />
@@ -328,7 +362,7 @@ const Hero = () => {
           viewBox="0 0 34 34"
         >
           <polygon
-           
+            ref={secondPathRef}
             points="21.33 16.83 17.5 16.83 17.5 12.97 16.5 12.97 16.5 16.83 12.68 16.83 12.68 17.83 16.5 17.83 16.5 21.69 17.5 21.69 17.5 17.83 21.33 17.83 21.33 16.83"
             fill="none"
             stroke="#fff"

@@ -1,8 +1,9 @@
 const Header = () => {
    return (
-    <header className="bg-background/50 border border-border px-6 sm:px-12 py-7 m-4 sm:m-7 rounded-sm">
+    <header className="bg-background/50 border border-border px-6 sm:px-12 py-4 m-4 sm:m-7 rounded-sm">
         <nav>
-            <ul className="flex gap-12">
+            <ul className="flex flex-wrap gap-12"> 
+                {/* wrap temporário, arrumar o mobile */}
                 <li>
                     <a href="#">Página inicial</a>
                 </li>
