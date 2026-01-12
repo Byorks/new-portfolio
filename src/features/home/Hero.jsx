@@ -9,9 +9,9 @@ const Hero = () => {
   const titleRef = useRef();
   const subTitleRef = useRef();
   const arrowRef = useRef();
-  const firstSvgRef = useRef(null);
-  const firstPathRef = useRef(null);
-  const firstPath2Ref = useRef(null);
+  const firstSvgRef = useRef();
+  const firstPathRef = useRef();
+  const firstPath2Ref = useRef();
   const secondSvgRef = useRef();
   const secondPathRef = useRef();
   const thirdSvgRef = useRef();
@@ -25,8 +25,9 @@ const Hero = () => {
       const drawSecondPaths = secondSvgRef.current.querySelectorAll("path");
       const drawThirdPaths = thirdSvgRef.current.querySelectorAll("path");
       const drawFourthPaths = fourthSvgRef.current.querySelectorAll("path");
-      const showThirdClipPath =
-        thirdSvgRef.current.querySelector("#clip0_2078_55 rect");
+      const showThirdClipPath = thirdSvgRef.current.querySelector(
+        "#clip0_2078_55 rect"
+      );
       // Cria o SplitText no elemento h1
       const titleSplit = new SplitText(titleRef.current, {
         type: "chars", // Divide apenas em caracteres (mais performático)
@@ -76,23 +77,11 @@ const Hero = () => {
       });
 
       // linhas do svg
-      tl.to(drawFirstPaths, {
+      tl.to([drawFirstPaths, drawSecondPaths], {
         drawSVG: "0% 100%",
         duration: 1.5,
         ease: "power2.out",
       });
-
-      // linhas do svg
-      tl.to(
-        drawSecondPaths,
-        {
-          drawSVG: "0% 100%",
-          duration: 1.5,
-          ease: "power2.out",
-        },
-        "<"
-      );
-      // "<" significa comece junto com a animação anterior
 
       // Outra forma de animações em conjunto
 
@@ -110,7 +99,7 @@ const Hero = () => {
           duration: 1,
           ease: "power2.out",
         },
-        "<"
+        "<" // "<" significa comece junto com a animação anterior
       );
 
       tl.to([drawThirdPaths, drawFourthPaths], {
@@ -168,10 +157,70 @@ const Hero = () => {
     { scope: containerRef }
   );
 
+  useGSAP(
+    () => {
+      const tl = gsap.timeline({ repeat: -1, repeatDelay: 3, delay: 5 });
+
+      // criando lista com os paths
+      let arrowSvgPaths = fourthSvgRef.current.querySelectorAll("path");
+
+      let arrayArrowPaths = [...arrowSvgPaths];
+
+      arrayArrowPaths.pop(arrayArrowPaths.length - 1);
+      arrayArrowPaths.pop(arrayArrowPaths.length - 1);
+      console.log(arrowSvgPaths);
+
+      // removendo o ultimo path, do morph
+
+      // estado base
+      gsap.set(arrayArrowPaths, { svgOrigin: "16 16" });
+
+      // jitter horizontal
+      tl.to(arrayArrowPaths, { x: -4, duration: 0.04, ease: "power4.inOut" })
+        .to(arrayArrowPaths, { x: 4, duration: 0.04, ease: "power4.inOut" })
+        .to(arrayArrowPaths, { x: 0, duration: 0.04, ease: "power4.inOut" })
+
+        .to(arrayArrowPaths, { skewX: 15, scaleY: 1.1, duration: 0.06 })
+        .to(arrayArrowPaths, { skewX: 0, scaleY: 1, duration: 0.06 })
+
+        .to(
+          arrayArrowPaths,
+          {
+            duration: 0.1,
+            morphSVG: "#alt-shape",
+            ease: "power2.inOut",
+          },
+         "+=3"
+        ) 
+         
+
+        // outro micro jitter
+        .to(arrayArrowPaths, { y: -3, duration: 0.04 })
+        .to(arrayArrowPaths, { y: 3, duration: 0.04 })
+        .to(arrayArrowPaths, { y: 0, duration: 0.04 })
+ 
+
+        .to(arrayArrowPaths, {
+          duration: 0.1,
+          morphSVG: "#alt-shape-2",
+          ease: "power2.inOut",  
+        },
+        "+=3" // ⏸ espera 3s antes do próximo
+      )
+
+        .to(arrayArrowPaths, { y: -3, duration: 0.04 })
+        .to(arrayArrowPaths, { y: 3, duration: 0.04 })
+        .to(arrayArrowPaths, { y: 0, duration: 0.04 });
+
+      return () => tl.kill();
+    },
+    { scope: fourthSvgRef } 
+  );
+
   return (
     <section
       ref={containerRef}
-      className="min-h-[80vh] w-full border border-amber-100 flex flex-col justify-between p-6 sm:p-11"
+      className="min-h-[80vh] w-full flex flex-col justify-between p-6 sm:p-11"
     >
       <div className="flex justify-between w-full">
         <svg
@@ -219,53 +268,6 @@ const Hero = () => {
             stroke-width="2"
           />
         </svg>
-        {/* <svg
-          ref={firstSvgRef}
-          width="34"
-          height="35"
-          viewBox="0 0 34 35"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-           
-            d="M17 12.9709V21.6897"
-            stroke="white"
-            stroke-width="2"
-            stroke-miterlimit="10"
-          />
-          <path   ref={firstPath2Ref} // x
-            d="M12.6787 17.3336H21.3279"
-            stroke="white"
-            stroke-width="2"
-            stroke-miterlimit="10"
-          />
-          <path   
-           ref={firstPathRef}
-            d="M33 10.8491V1H23.2295"
-            stroke="white"
-            stroke-width="2"
-            stroke-miterlimit="10"
-          />
-          <path   
-            d="M10.7705 1H1V10.8491"
-            stroke="white"
-            stroke-width="2"
-            stroke-miterlimit="10"
-          />
-          <path  
-            d="M23.2295 33.2574H33V23.4083"
-            stroke="white"
-            stroke-width="2"
-            stroke-miterlimit="10"
-          />
-          <path 
-            d="M1 23.4083V33.2574H10.7705"
-            stroke="white"
-            stroke-width="2"
-            stroke-miterlimit="10"
-          />
-        </svg> */}
 
         <svg
           ref={thirdSvgRef}
@@ -332,6 +334,22 @@ const Hero = () => {
             <path
               d="M16.3037 17.7971L12.0962 22.0046L16.3037 26.2121L20.5112 22.0046L16.3037 17.7971Z"
               fill="white"
+            />
+
+            {/* alternative svg */}
+            <path
+              style={{ visibility: "hidden" }}
+              id="alt-shape"
+              d="M32 0H26.6667L16 10.6667L5.33543 0H0V5.33543L10.6667 16L0 26.6667V32H5.33543L16 21.3354L26.6667 32H32V26.6667L21.3354 16L32 5.33543V0Z"
+              fill="white"
+            />
+
+            {/* second alt svg*/}
+            <path
+              style={{ visibility: "hidden" }}
+              id="alt-shape-2"
+              d="M16.3848 10.7695L22.1543 5H29V13.1543L15.7695 26.3848L3 13.6152V5H10.6152L16.3848 10.7695Z"
+              fill="#FF0000"
             />
           </g>
           <defs>
