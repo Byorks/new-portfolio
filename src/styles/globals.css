@@ -91,8 +91,13 @@
 
 }
 
-@layer utilities {
-      .title-h2 {
+/* @layer utilities {
+   
+} */
+
+/* Use essa camada para classes mais complexas onde vc ainda almeje sobrescrever com classes utilitárias com card btn badge */
+@layer components {
+    .title-h2 {
         @apply text-xl sm:text-3xl;
     }
 
@@ -119,11 +124,180 @@
     .greenShadow {
         text-shadow: 3px 0 #00ff88;
     }
-}
 
-/* Use essa camada para classes mais complexas onde vc ainda almeje sobrescrever com classes utilitárias com card btn badge */
-@layer components {
-  
+    /* Marquee blur */
+
+    .container {
+        height: 100%;
+        width: 100%;
+        position: relative;
+        pointer-events: none;
+    }
+
+    .resizable[data-spill=true] .container::after {
+        content: "";
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        background: hsl(10 0% 50% / 0.25);
+        width: calc(var(--scale) * 10000vw);
+        height: calc(var(--scale) * 10000vh);
+        pointer-events: none;
+        translate: -50% -50%;
+        mask:
+            linear-gradient(white, white) 50% 50% / 100% 100% no-repeat,
+            linear-gradient(white, white) 50% 50% / 100cqi 100cqh no-repeat;
+        mask-composite: exclude;
+    }
+
+    .resizable {
+        resize: both;
+        overflow: hidden;
+        container-type: size;
+        scale: var(--scale);
+        width: 600px;
+        height: 100px;
+    }
+
+    .resizable[data-spill=true] {
+        overflow: visible;
+        outline: 4px dashed white;
+    }
+
+    .resizable:active {
+        outline: 2px solid hsl(0 0% 100% / 0.5);
+    }
+
+    [data-spill=true] .container {
+        mask: unset;
+        overflow: visible;
+    }
+
+    .resizable {
+        min-height: 100px;
+        min-width: 300px;
+        max-width: calc(100% - 2rem);
+    }
+
+    .container ul {
+        display: flex;
+        gap: 1rem;
+        padding: 0;
+        margin: 0;
+        list-style-type: none;
+    }
+
+    .container ul {
+        height: 100%;
+        width: fit-content;
+        padding: 0;
+        align-items: center;
+        pointer-events: none;
+    }
+
+     .container li {
+        height: 80%;
+        aspect-ratio: 16 / 9;
+        font-size: clamp(2rem, 4vw + 1rem, 8rem);
+        display: grid;
+        place-items: center;
+    }
+
+     .container li svg {
+        fill: white;
+        height: 65%;
+    }
+
+    [data-play-state=running] :is(ul, li) {
+        animation-play-state: running !important;
+    }
+
+    [data-play-state=paused] :is(ul, li) {
+        animation-play-state: paused !important;
+    }
+
+    .container {
+        mask: linear-gradient(90deg, transparent, black 15% 85%, transparent);
+        width: 100%;
+        display: grid;
+        min-height: 100px;
+        min-width: 300px;
+    }
+
+    /* Blur component */
+    .marq-blur {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 25%;
+        z-index: 2;
+        pointer-events: none;
+    }
+
+    .marq-blur--right {
+        right: 0;
+    }
+
+    .marq-blur--left {
+        left: 0;
+        rotate: 180deg;
+    }
+
+    .marq-blur div {
+        position: absolute;
+        inset: 0;
+        z-index: var(--index);
+        mask: linear-gradient(90deg,
+                transparent calc(var(--index) * calc((100 / var(--blurs)) * 1%)),
+                black calc((var(--index) + 1) * calc((100 / var(--blurs)) * 1%)),
+                black calc((var(--index) + 2) * calc((100 / var(--blurs)) * 1%)),
+                transparent calc((var(--index) + 3) * calc((100 / var(--blurs)) * 1%)));
+        backdrop-filter: blur(calc((var(--index, 0) * var(--blur, 0)) * 2px));
+    }
+
+    .marq-blur {
+        opacity: 0;
+    }
+
+    [data-outline=true] .marq-blur {
+        border: 4px dashed hotpink;
+        background: hsl(320 100% 50% / 0.1);
+    }
+
+    [data-blurring=true] .marq-blur {
+        opacity: 1;
+    }
+
+    /* The animation stuff */
+    @media(prefers-reduced-motion: no-preference) {
+        [data-translate=items] ul {
+            gap: 0;
+        }
+
+        [data-translate=items][data-direction=horizontal].container {
+            padding-inline: 0;
+        }
+
+        [data-translate=items] li {
+            --duration: calc(var(--speed) * 1s);
+            --delay: calc((var(--duration) / var(--count)) * (var(--index, 0) * -1));
+            animation: slide var(--duration) var(--delay) infinite linear paused;
+            translate: var(--origin-x) var(--origin-y);
+        }
+
+        [data-translate=items][data-direction=horizontal] li {
+            --origin-x: calc(((var(--count) - var(--index)) + var(--inset, 0)) * 100%);
+            --origin-y: 0;
+            --destination-x: calc(calc((var(--index) + 1 + var(--outset, 0)) * -100%));
+            --destination-y: 0;
+        }
+
+        @keyframes slide {
+            100% {
+                translate: var(--destination-x) var(--destination-y);
+            }
+        }
+    }
 }
 
 /* Automaticamente pega o valor do SO o usuário */
