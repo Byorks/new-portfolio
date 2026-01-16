@@ -10,6 +10,7 @@ import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import { SplitText } from "gsap/SplitText";
 import { TextPlugin } from "gsap/TextPlugin";
 import { MorphSVGPlugin } from "gsap/MorphSVGPlugin";
+import ScrambleTextPlugin from "gsap/ScrambleTextPlugin";
 
 gsap.registerPlugin(
   useGSAP,
@@ -20,9 +21,10 @@ gsap.registerPlugin(
   ScrollSmoother,
   ScrollToPlugin,
   SplitText,
-  TextPlugin
+  TextPlugin,
+  ScrambleTextPlugin
 );
 
-export { gsap, ScrollTrigger, useGSAP, SplitText, TextPlugin };
+export { gsap, ScrollTrigger, useGSAP, SplitText, TextPlugin};
 
 // Cuidado para não carregar plugins que nunca serão utilizados

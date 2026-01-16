@@ -16,14 +16,22 @@ const timers = [
   ],
   [
     // Setup 1
-    { opacity: 0, duration: 0.2, delay: 0.8 },
-    { opacity: 1, duration: 0.03 },
-    { opacity: 0, duration: 0.01 },
+    { opacity: 0, duration: 0.2 },
     { opacity: 1, duration: 0.02 },
     { opacity: 0, duration: 0.01 },
     { opacity: 1, duration: 0.4 },
     { opacity: 0, duration: 0.2 },
     { opacity: 1, duration: 0.02 },
+  ],
+  [
+    // Setup 2
+    { opacity: 0, duration: 0.2 },
+    { opacity: .2, duration: .1 },
+    { opacity: 1, duration: 0.2 },
+    { opacity: .2, duration: .1 },
+    { opacity: 1, duration: 0.3 },
+    { opacity: .2, duration: .3  },
+    { opacity: 1, duration: 0.5 },
   ],
 ];
 

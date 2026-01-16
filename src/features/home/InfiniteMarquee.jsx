@@ -173,9 +173,9 @@ function InfiniteMarquee() {
   }, [items]);
 
   return (
-    <div className="grid place-items-center">
+    <div className="w-full grid place-items-center">
       <div
-        className="overflow-hidden w-full h-28"
+        className="overflow-hidden w-full h-28 scale-(--scale)"
         data-translate="items"
         data-direction="horizontal"
         data-blurring={blurring}
@@ -190,7 +190,7 @@ function InfiniteMarquee() {
           "--blurs": BLURS,
         }}
       >
-        <div className="container">
+        <div className="marq-container">
           <div className="marq-blur marq-blur--left">
             {new Array(BLURS).fill().map((_, index) => (
               <div key={index} style={{ "--index": index }} />
