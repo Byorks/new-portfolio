@@ -23,6 +23,6 @@ gsap.registerPlugin(
   TextPlugin
 );
 
-export { gsap, ScrollTrigger, useGSAP, SplitText };
+export { gsap, ScrollTrigger, useGSAP, SplitText, TextPlugin };
 
 // Cuidado para não carregar plugins que nunca serão utilizados

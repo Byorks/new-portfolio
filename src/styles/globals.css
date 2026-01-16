@@ -66,7 +66,7 @@
 
     /* Tipografia */
     --font-title: "Poppins", "Saira", sans-serif;
-    --font-body: 'DM Sans', "Inter", sans-serif, i-sans-serif, system-ui, ;
+    --font-body: 'DM Sans', "Inter", sans-serif, i-sans-serif, system-ui;
 }
 
 @layer base {
@@ -75,22 +75,56 @@
         color: var(--color-text);
     }
 
-    h1, h2, h3, h4 {
+    h1,
+    h2,
+    h3,
+    h4 {
         font-size: var(--text-4xl);
-       font-family: var(--font-title) ;
+        font-family: var(--font-title);
     }
 
-    a, p, button { 
+    a,
+    p,
+    button {
         @apply font-body
     }
 
 }
 
-/* Use essa camada para classes mais complexas onde vc ainda almeje sobrescrever com classes utilitárias com card btn badge */
-@layer components {
-   
+@layer utilities {
+      .title-h2 {
+        @apply text-xl sm:text-3xl;
+    }
+
+    .glitch {
+        position: absolute;
+        left: 0;
+        right: 0;
+    }
+
+    .clip-top {
+        -webkit-clip-path: inset(0 0 41% 0);
+        clip-path: inset(0 0 41% 0);
+    }
+
+    .clip-bottom {
+        -webkit-clip-path: inset(58% 0 0 0);
+        clip-path: inset(58% 0 0 0);
+    }
+
+    .redShadow {
+        text-shadow: -3px 0 red;
+    }
+
+    .greenShadow {
+        text-shadow: 3px 0 #00ff88;
+    }
 }
 
+/* Use essa camada para classes mais complexas onde vc ainda almeje sobrescrever com classes utilitárias com card btn badge */
+@layer components {
+  
+}
 
 /* Automaticamente pega o valor do SO o usuário */
 @media (prefers-color-scheme: light) {

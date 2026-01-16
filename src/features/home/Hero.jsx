@@ -1,21 +1,22 @@
 import { useRef } from "react";
 import arrowBottom from "../../assets/image/ui/seta.svg";
 import { gsap, ScrollTrigger, SplitText } from "../../assets/lib/gsap";
-import useFlicker from "../../hooks/useFlicker";
 import { useGSAP } from "@gsap/react";
+import GlitchTitle from "./GlitchTitle";
+import flicker from "../../animations/flicker";
 
-const Hero = () => {
+const Hero = ( { className }) => {
   const containerRef = useRef();
   const titleRef = useRef();
   const subTitleRef = useRef();
   const arrowRef = useRef();
   const firstSvgRef = useRef();
-  const firstPathRef = useRef();
   const firstPath2Ref = useRef();
   const secondSvgRef = useRef();
   const secondPathRef = useRef();
   const thirdSvgRef = useRef();
   const fourthSvgRef = useRef();
+  const glitchWrapperRef = useRef();
 
   // Efeito de aparecer texto
   useGSAP(
@@ -59,6 +60,7 @@ const Hero = () => {
       );
 
       gsap.set([drawThirdPaths, drawFourthPaths], { opacity: 0 });
+      
       // Rotação do +
       gsap.set([firstPath2Ref.current, secondPathRef.current], {
         rotation: 720,
@@ -79,7 +81,7 @@ const Hero = () => {
       // linhas do svg
       tl.to([drawFirstPaths, drawSecondPaths], {
         drawSVG: "0% 100%",
-        duration: 1.5,
+        duration: .5,
         ease: "power2.out",
       });
 
@@ -102,9 +104,10 @@ const Hero = () => {
         "<" // "<" significa comece junto com a animação anterior
       );
 
+      // Desenho do X
       tl.to([drawThirdPaths, drawFourthPaths], {
         drawSVG: "0% 100%",
-        duration: 1.5,
+        duration: 0.5,
         ease: "power2.out",
       });
 
@@ -129,22 +132,32 @@ const Hero = () => {
           },
           "-=0.4"
         ); // Overlap leve de 0.4s para fluir melhor (ajuste a gosto)
+      // após terminar animação de subTitleSplit.chars
+
+      // 3) faz o h2 “sair”
+      tl.to(subTitleRef.current, {
+        delay: 1,
+        opacity: 0,
+        y: -20, // sobe um pouco (ou +20 para descer)
+        duration: 0.3,
+        ease: "power2.in",
+      })
+      .set(subTitleRef.current, {
+        opacity: 0,
+        pointerEvents: "none",
+      });
+
+      tl.to(glitchWrapperRef.current, {
+        opacity: 1,
+        duration: 0.3,
+        ease: "power2.out",
+      });
 
       // 3. Flicker
       // Sua sequência de flicker (pode simplificar com .to() repetido ou stagger se múltiplos)
-      tl.to(arrowRef.current, { opacity: 0, duration: 0.2, delay: 0.8 })
-        .to(arrowRef.current, { opacity: 1, duration: 0.02 })
-        .to(arrowRef.current, { opacity: 0, duration: 0.4 })
-        .to(arrowRef.current, { opacity: 1, duration: 0.02 })
-        .to(arrowRef.current, { opacity: 0, duration: 0.2 })
-        .to(arrowRef.current, { opacity: 1, duration: 0.02 })
-        .to(arrowRef.current, { opacity: 0, duration: 0.4 })
-        .to(arrowRef.current, { opacity: 1, duration: 0.02 })
-        .to(arrowRef.current, { opacity: 0, duration: 0.01 })
-        .to(arrowRef.current, { opacity: 1, duration: 0.02 })
-        .to(arrowRef.current, { opacity: 0, duration: 0.01 })
-        .to(arrowRef.current, { opacity: 1, duration: 0.02 })
-        .to({}, { duration: 0.6 }); // Pausa final
+      flicker(tl, arrowRef.current, 1);
+
+      tl.to({}, { duration: 0.6 }); // pausa final
 
       // Cleanup: reverte o split ao desmontar o componente
       return () => {
@@ -190,23 +203,23 @@ const Hero = () => {
             morphSVG: "#alt-shape",
             ease: "power2.inOut",
           },
-         "+=3"
-        ) 
-         
+          "+=3"
+        )
 
         // outro micro jitter
         .to(arrayArrowPaths, { y: -3, duration: 0.04 })
         .to(arrayArrowPaths, { y: 3, duration: 0.04 })
         .to(arrayArrowPaths, { y: 0, duration: 0.04 })
- 
 
-        .to(arrayArrowPaths, {
-          duration: 0.1,
-          morphSVG: "#alt-shape-2",
-          ease: "power2.inOut",  
-        },
-        "+=3" // ⏸ espera 3s antes do próximo
-      )
+        .to(
+          arrayArrowPaths,
+          {
+            duration: 0.1,
+            morphSVG: "#alt-shape-2",
+            ease: "power2.inOut",
+          },
+          "+=3" // ⏸ espera 3s antes do próximo
+        )
 
         .to(arrayArrowPaths, { y: -3, duration: 0.04 })
         .to(arrayArrowPaths, { y: 3, duration: 0.04 })
@@ -214,14 +227,13 @@ const Hero = () => {
 
       return () => tl.kill();
     },
-    { scope: fourthSvgRef } 
+    { scope: fourthSvgRef }
   );
 
   return (
     <section
       ref={containerRef}
-      className="min-h-[80vh] w-full flex flex-col justify-between p-6 sm:p-11"
-    >
+      className={`min-h-[80dvh] w-full flex flex-col justify-between p-6 sm:p-11 ${ className}`}>
       <div className="flex justify-between w-full">
         <svg
           ref={firstSvgRef}
@@ -290,19 +302,25 @@ const Hero = () => {
           </defs>
         </svg>
       </div>
-      <div className="max-w-6xl mx-auto border border-amber-300">
+      <div className="max-w-6xl lg:max-w-7xl w-full mx-auto">
         <h1
           ref={titleRef}
           className="main-title text-2xl sm:text-5xl leading-tight tracking-wider overflow-hidden"
         >
           Vanessa Byork
         </h1>
-        <h2
-          ref={subTitleRef}
-          className="text-3xl sm:text-6xl leading-tight tracking-wider overflow-hidden"
-        >
-          Desenvolvedora Front-End
-        </h2>
+
+        <div className="relative inline-block">
+          <h2
+            ref={subTitleRef}
+            className="text-3xl sm:text-6xl leading-tight tracking-wider  whitespace-normal break-normal"
+          >
+            Front-end <span className="whietspace-nowrap">Developer</span> 
+          </h2>
+          <div ref={glitchWrapperRef} className="absolute inset-0 opacity-0">
+            <GlitchTitle />
+          </div>
+        </div>
       </div>
       <div className="flex justify-between w-full">
         <svg
@@ -361,11 +379,11 @@ const Hero = () => {
 
         <div
           ref={arrowRef}
-          className="w-fit flex-col flex border border-amber-800 justify-center items-center gap-4"
+          className="w-fit flex-col flex justify-center items-center gap-4"
         >
           <p className="text-text-secondary">Scroll down</p>
           <img
-            className="bottom-arrow "
+            className="bottom-arrow animate-bounce"
             src={arrowBottom}
             alt="seta para baixo"
           />
