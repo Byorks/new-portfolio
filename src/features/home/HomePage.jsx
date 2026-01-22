@@ -1,5 +1,6 @@
 import Header from "./Header";
 import Hero from "./Hero";
+import ProjectsSection from "./ProjectsSection";
 import TechnologiesSection from "./TechnologiesSection";
 
 const HomePage = () => {
@@ -13,6 +14,8 @@ const HomePage = () => {
         <Hero className="snap-start snap-always" />
 
         <TechnologiesSection />
+
+        <ProjectsSection />
       </main>
     </>
   );

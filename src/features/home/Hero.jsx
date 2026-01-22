@@ -91,6 +91,7 @@ const Hero = ( { className }) => {
         opacity: 1,
         duration: 0.6,
       });
+      
       tl.to(
         showThirdClipPath,
         {

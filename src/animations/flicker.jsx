@@ -30,7 +30,7 @@ const timers = [
     { opacity: 1, duration: 0.2 },
     { opacity: .2, duration: .1 },
     { opacity: 1, duration: 0.3 },
-    { opacity: .2, duration: .3  },
+    { opacity: .2, duration: .3 },
     { opacity: 1, duration: 0.5 },
   ],
 ];

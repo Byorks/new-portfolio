@@ -3,6 +3,7 @@ import { useRef } from "react";
 import { gsap, useGSAP } from "../../assets/lib/gsap";
 import InfiniteMarquee from "./InfiniteMarquee";
 import flicker from "../../animations/flicker";
+import scrambleTech from "../../animations/scrumbleText";
 
 const TechnologiesSection = () => {
   // criando array de refs
@@ -18,38 +19,24 @@ const TechnologiesSection = () => {
         trigger: containerRef.current,
         start: "top 80%",
         end: "bottom 20%",
-        toggleActions: "restart pause resume pause",
+        // toggleActions: "restart pause resume pause",
         markers: true,
       },
     });
 
     // Colocando a opacidade para 0
-    gsap.set([svgDivRefs.current, titleRef.current, logoRef.current], { opacity: 0 });
-
-    flicker(tl, svgDivRefs.current, 2);
-    tl.to(titleRef.current, {
-      opacity: 1,
-      duration: 0.3,
+    gsap.set([svgDivRefs.current, titleRef.current, logoRef.current], {
+      opacity: 0,
     });
 
-    tl.to(
-      titleRef.current,
-      {
-        scrambleText: {
-          text: "Tecnologias",
-          chars:
-            "ラドクリフマラソンわたしワタシんょンョたばこタバコとうきょうトウキョウ",
-          speed: 2,
-        },
-        duration: 0.5,
-      },
-      "<"
-    );
-
+    flicker(tl, svgDivRefs.current, 2);
+ 
+    scrambleTech(tl, titleRef.current, "Tecnologias")
+    
     tl.to(logoRef.current, {
       opacity: 1,
-      duration: .5
-    })
+      duration: 0.5,
+    });
   });
 
   return (
