@@ -7,5 +7,13 @@
             "React",
             "Tailwind"
         ]
+    },
+    {
+        "id": "2",
+        "title": "Blablabla",
+        "description": "",
+        "tags": [
+            "React"
+        ]
     }
 ]

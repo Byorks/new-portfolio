@@ -1,15 +1,19 @@
 import { useRef } from "react";
 import { useGSAP, gsap } from "../../assets/lib/gsap";
-import flicker from "../../animations/flicker";
 import scrambleTech from "../../animations/scrumbleText";
 import ProjectCard from "./ProjectCard";
+import { useProjects } from "../../hooks/useProjects";
 
 const ProjectsSection = () => {
+  const { projects, loading, error } = useProjects();
+  console.log(projects);
+
   const containerRef = useRef();
   const titleRef = useRef();
   const svgDivRef = useRef();
   const projectCards = useRef();
 
+  // Animações
   useGSAP(() => {
     // paths da div
     const divPaths = svgDivRef.current.querySelectorAll("line");
@@ -45,8 +49,8 @@ const ProjectsSection = () => {
       opacity: 1,
       duration: 0.5,
     });
-    
   });
+
   return (
     <section
       ref={containerRef}
@@ -75,10 +79,17 @@ const ProjectsSection = () => {
 
         <h2 ref={titleRef} className="title-h2 text-center"></h2>
 
-        <div ref={projectCards} className="grid md:grid-cols-12 gap-6 py-12">
-          <ProjectCard />
-          <ProjectCard />
-          <ProjectCard />
+        <div ref={projectCards} className="grid md:grid-cols-12 gap-6 py-12 px-6 sm:px-8">
+          {loading ? (
+            <p>Carregando...</p>
+          ) : projects && projects.length > 0 ? (
+            // substituir por map para pegar todos os projetos
+           projects.map(p => (
+            <ProjectCard key={p.id} project={p} />
+           ))
+          ) : (
+            <p>Nenhum projeto encontrado.</p>
+          )}
         </div>
       </div>
     </section>

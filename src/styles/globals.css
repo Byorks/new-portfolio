@@ -28,10 +28,17 @@
     --color-text: #ffffff;
     --color-text-secondary: #6c757d;
     --color-border: #AEAECB;
+    --color-dark: #040611;
 
     --shadow-small: 0 1px 3px rgba(0, 0, 0, 0.12);
     --shadow-medium: 0 4px 6px rgba(0, 0, 0, 0.1);
     --shadow-large: 0 10px 15px rgba(0, 0, 0, 0.1);
+
+    --accent: hsl(183 38% 57%);
+    --shadow: hsl(10 100% 60%);
+
+    --color-cyber: '#00fff2';
+    --color-cyber-red: '#ff003c';
 }
 
 /* Caso vá fazer alternador manual */
@@ -40,13 +47,17 @@
     --color-secondary: #6c757d;
     --color-background: oklch(95.514% 0.00011 271.152);
     --color-surface: #343a40;
-    --color-text: #f8f9fa;
+    --color-text: #16191d;
     --color-text-secondary: #adb5bd;
     --color-border: #495057;
+    --color-dark: #f0f1f7;
 
     --shadow-small: 0 1px 3px rgba(0, 0, 0, 0.3);
     --shadow-medium: 0 4px 6px rgba(0, 0, 0, 0.3);
     --shadow-large: 0 10px 15px rgba(0, 0, 0, 0.3);
+
+    --accent: hsl(183 38% 57%);
+    --shadow: hsl(10 100% 60%);
 }
 
 /* Smooth theme transitions */
@@ -67,7 +78,93 @@
     /* Tipografia */
     --font-title: "Poppins", "Saira", sans-serif;
     --font-body: 'DM Sans', "Inter", sans-serif, i-sans-serif, system-ui;
+
+    --animate-glitch: glitch 2s infinite;
+
+    /* KEYFRAMES EM SINTAXE CSS PURA */
+
+    @keyframes glitch {
+        0% {
+            clip-path: var(--clip-one);
+        }
+
+        2%,
+        8% {
+            clip-path: var(--clip-two);
+            transform: translate(calc(var(--shimmy-distance) * -1%), 0);
+        }
+
+        6% {
+            clip-path: var(--clip-two);
+            transform: translate(calc(var(--shimmy-distance) * 1%), 0);
+        }
+
+        9% {
+            clip-path: var(--clip-two);
+            transform: translate(0, 0);
+        }
+
+        10% {
+            clip-path: var(--clip-three);
+            transform: translate(calc(var(--shimmy-distance) * 1%), 0);
+        }
+
+        13% {
+            clip-path: var(--clip-three);
+            transform: translate(0, 0);
+        }
+
+        14%,
+        21% {
+            clip-path: var(--clip-four);
+            transform: translate(calc(var(--shimmy-distance) * 1%), 0);
+        }
+
+        25% {
+            clip-path: var(--clip-five);
+            transform: translate(calc(var(--shimmy-distance) * 1%), 0);
+        }
+
+        30% {
+            clip-path: var(--clip-five);
+            transform: translate(calc(var(--shimmy-distance) * -1%), 0);
+        }
+
+        35%,
+        45% {
+            clip-path: var(--clip-six);
+            transform: translate(calc(var(--shimmy-distance) * -1%));
+        }
+
+        40% {
+            clip-path: var(--clip-six);
+            transform: translate(calc(var(--shimmy-distance) * 1%));
+        }
+
+        50% {
+            clip-path: var(--clip-six);
+            transform: translate(0, 0);
+        }
+
+        55% {
+            clip-path: var(--clip-seven);
+            transform: translate(calc(var(--shimmy-distance) * 1%), 0);
+        }
+
+        60% {
+            clip-path: var(--clip-seven);
+            transform: translate(0, 0);
+        }
+
+        31%,
+        61%,
+        100% {
+            clip-path: var(--clip-four);
+        }
+    }
 }
+
+
 
 @layer base {
     body {
@@ -194,7 +291,7 @@
         pointer-events: none;
     }
 
-     .marq-container ul li {
+    .marq-container ul li {
         height: 80%;
         aspect-ratio: 16 / 9;
         font-size: clamp(2rem, 4vw + 1rem, 8rem);
@@ -202,7 +299,7 @@
         place-items: center;
     }
 
-     .marq-container ul li svg {
+    .marq-container ul li svg {
         fill: white;
         height: 65%;
     }
@@ -295,7 +392,25 @@
             }
         }
     }
+
+    /* Estilo para as letras individuais do glitch (como no original) */
+    .glitch-letters {
+        text-shadow: 0 1px var(--shadow);
+    }
+
+    .glitch-letters span:nth-child(2),
+    .glitch-letters span:nth-child(5) {
+        scale: 1 -1;
+    }
+
+    .glitch-letters span:nth-child(3),
+    .glitch-letters span:nth-child(6),
+    .glitch-letters span:nth-child(7) {
+        scale: -1 -1;
+    }
+
 }
+
 
 /* Automaticamente pega o valor do SO o usuário */
 @media (prefers-color-scheme: light) {
