@@ -1,7 +1,3 @@
-import { useState } from "react";
-import { getProjects } from "../../services/projectService";
-import { useEffect } from "react";
-import { useFetch } from "../../hooks/useFetch";
 import CyberButton from "./CyberButton";
 
 const ProjectCard = ({ project }) => {
@@ -18,14 +14,17 @@ const ProjectCard = ({ project }) => {
               </div>
             ))}
         </div>
-         <CyberButton 
-        label="Acessar" 
-        shortcut="↵" 
-        onClick={() => console.log('Ação confirmada!')} 
-      />
-        <button className="bg-primary border border-text py-1 w-3/4 self-end font-medium text-neutral-900 not-dark:text-neutral-100">
+
+        <CyberButton
+          label="Acessar"
+          shortcut="Esc"
+          borderColor="var(--color-border)"
+          onClick={() => console.log("Ação confirmada!")}
+          className="self-end"
+        />
+        {/* <button className="bg-primary border border-text py-1 w-3/4 self-end font-medium text-neutral-900 not-dark:text-neutral-100">
           Acessar
-        </button>
+        </button> */}
       </div>
     </div>
   );
@@ -35,3 +34,4 @@ export default ProjectCard;
 
 // TO-DO :
 // - Implementar GUID aleatório nos projetos
+// - Ao dar hover no card, tocar um vídeo da imagem

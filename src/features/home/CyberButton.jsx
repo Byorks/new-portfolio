@@ -27,56 +27,53 @@ const CyberButton = ({
   const mainClip =
     "polygon(0 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0% 100%)";
 
-  // Estilo da Máscara para criar a borda de 1px
-  const borderMaskStyle = {
-    clipPath: mainClip,
-    background: borderColor,
-    // A mágica da borda:
-    WebkitMask: `linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)`,
-    WebkitMaskComposite: "xor",
-    maskComposite: "exclude",
-    padding: borderWidth,
-  };
-
   return (
     <button
       onClick={onClick}
       className={`group relative px-2 py-2 font-cyber uppercase text-cyber bg-transparent border-0 cursor-pointer w-[140px] flex items-center gap-2 overflow-visible select-none ${className}`}
       style={glitchVars}
     >
-      {/* 1. LAYER DE BORDA (A novidade) */}
+      {/* --- CAMADA 1: FUNDO DA BORDA (Preenche tudo com a cor da borda) --- */}
       <span
-        className="absolute inset-0 z-10 pointer-events-none"
-        style={borderMaskStyle}
+        className="absolute inset-0 z-0 transition-colors duration-200"
+        style={{
+          clipPath: mainClip,
+          backgroundColor: borderColor,
+        }}
       />
-      
+
       {/* 1. Backdrop Principal */}
       <span
-        className="absolute inset-0 z-0 bg-white/10 backdrop-blur-md group-hover:bg-cyber transition-colors duration-200"
-        style={{ clipPath: mainClip }}
+        className="absolute inset-0 z-0 bg-primary/90 backdrop-blur-md hover:bg-background group-hover:bg-background transition-colors duration-200"
+        style={{
+          clipPath: mainClip,
+          inset: borderWidth, // Aqui cria o efeito de borda
+        }}
       >
-        <span className="absolute bottom-0 right-0 w-3 h-3 bg-cyber after:content-[''] after:absolute after:top-1/2 after:left-1/2 after:-translate-x-1/2 after:-translate-y-1/2 after:w-[200%] after:h-[1px] after:bg-black after:rotate-[135deg]" />
+        <span className="absolute bottom-0 right-0 w-3 h-3 bg-cyber after:content-[''] after:absolute after:top-1/2 after:left-1/2 after:-translate-x-1/2 after:-translate-y-1/2 after:w-[200%] after:h-[1px] after:bg-black after:rotate-135" />
       </span>
 
       {/* 2. Conteúdo Normal */}
-      <kbd className="z-10 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-cyber text-[8px] font-bold text-text transition-colors group-hover:text-cyber group-hover:bg-black">
+      <kbd className="z-10 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-background/80 text-[8px] font-bold text-text transition-colors group-hover:text-cyber group-hover:bg-black">
         {shortcut}
       </kbd>
-      <span className="z-10 font-bold tracking-tighter group-hover:text-black">
+      {/* Hover de texto para branco */}
+      <span className="z-10 font-bold tracking-tighter text-background group-hover:text-white">
         {label}
       </span>
 
       {/* 3. CAMADA GLITCH (Aparece no hover) */}
+      {/* Aqui muda o texto do glitch */}
       <div
-        className="absolute inset-0 z-20 hidden group-hover:flex items-center gap-2 px-2 py-2 bg-black text-cyber animate-glitch pointer-events-none shadow-[0_1px_var(--shadow)]"
+        className="absolute inset-0 z-20 hidden group-hover:flex items-center gap-2 px-2 py-2 bg-white animate-glitch pointer-events-none shadow-[0_1px_var(--shadow)]"
         aria-hidden="true"
       >
         {/* Backdrop interno do glitch */}
         <span
-          className="absolute inset-0 bg-black z-[-1]"
+          className="absolute inset-0 bg-white z-[-1]"
           style={{ clipPath: mainClip }}
         >
-          <span className="absolute  bottom-0 right-0 w-3 h-3 bg-cyber after:content-[''] after:absolute after:top-1/2 after:left-1/2 after:-translate-x-1/2 after:-translate-y-1/2 after:w-[200%] after:h-[1px] after:bg-black after:rotate-[135deg]" />
+          <span className="absolute  bottom-0 right-0 w-3 h-3 bg-cyber after:content-[''] after:absolute after:top-1/2 after:left-1/2 after:-translate-x-1/2 after:-translate-y-1/2 after:w-[200%] after:h-[1px] after:bg-white after:rotate-[135deg]" />
         </span>
 
         <kbd className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-cyber text-[8px] font-bold text-black opacity-0">
@@ -84,7 +81,7 @@ const CyberButton = ({
         </kbd>
 
         {/* Letras separadas para o efeito nth-child do CSS */}
-        <span className="glitch-letters flex font-bold tracking-tighter text-cyber">
+        <span className="glitch-letters flex font-bold tracking-tighter text-dark">
           {label.split("").map((char, i) => (
             <span key={i}>{char}</span>
           ))}

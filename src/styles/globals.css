@@ -36,9 +36,9 @@
 
     --accent: hsl(183 38% 57%);
     --shadow: hsl(10 100% 60%);
-
-    --color-cyber: '#00fff2';
-    --color-cyber-red: '#ff003c';
+ 
+    --color-cyber: #00fff2;
+    --color-cyber-red: #ff003c;
 }
 
 /* Caso vá fazer alternador manual */
@@ -73,7 +73,10 @@
     --color-text: var(--color-text);
     --color-text-secondary: var(--color-text-secondary);
     --color-border: var(--color-border);
-
+    --color-dark: var(--color-dark);
+     
+    --color-cyber: var(--color-cyber);
+    --color-cyber-red: var(--color-cyber-red);
 
     /* Tipografia */
     --font-title: "Poppins", "Saira", sans-serif;
