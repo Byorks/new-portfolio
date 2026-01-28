@@ -5,6 +5,7 @@ const CyberButton = ({
   className = "",
   borderColor = "var(--accent)", // Cor customizável
   borderWidth = "1px", // Espessura customizável
+  buttonColor = "bg-primary/90"
 }) => {
   const glitchVars = {
     "--shimmy-distance": "5",
@@ -44,7 +45,7 @@ const CyberButton = ({
 
       {/* 1. Backdrop Principal */}
       <span
-        className="absolute inset-0 z-0 bg-primary/90 backdrop-blur-md hover:bg-background group-hover:bg-background transition-colors duration-200"
+        className={`absolute inset-0 z-0 backdrop-blur-md hover:bg-background group-hover:bg-background transition-colors duration-200 ${buttonColor}`}
         style={{
           clipPath: mainClip,
           inset: borderWidth, // Aqui cria o efeito de borda
