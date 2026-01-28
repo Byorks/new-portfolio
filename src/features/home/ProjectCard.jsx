@@ -1,6 +1,9 @@
+import { useState } from "react";
 import CyberButton from "./CyberButton";
+import CyberModal from "./CyberModal";
 
 const ProjectCard = ({ project }) => {
+  const [modalOpen, setModalOpen] = useState(false);
   return (
     <div className="bg-surface col-span-4 rounded-sm border-[.4px] border-border">
       <div className="min-h-44 bg-neutral-600">Card img</div>
@@ -17,15 +20,26 @@ const ProjectCard = ({ project }) => {
 
         <CyberButton
           label="Acessar"
-          shortcut="Esc"
+          shortcut="⮞"
           borderColor="var(--color-border)"
-          onClick={() => console.log("Ação confirmada!")}
+          onClick={() => setModalOpen(true)}
           className="self-end"
         />
         {/* <button className="bg-primary border border-text py-1 w-3/4 self-end font-medium text-neutral-900 not-dark:text-neutral-100">
           Acessar
         </button> */}
       </div>
+
+      <CyberModal
+        isOpen={modalOpen}
+        onClose={() => setModalOpen(false)}
+        title="Access Granted"
+      >
+        <p>Você está prestes a entrar na rede neural protegida.</p>
+        <p className="mt-2 text-amber-400">
+          Aviso: Rastreamento de IP ativado pelo ICE da Militech.
+        </p>
+      </CyberModal>
     </div>
   );
 };

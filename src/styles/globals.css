@@ -36,7 +36,7 @@
 
     --accent: hsl(183 38% 57%);
     --shadow: hsl(10 100% 60%);
- 
+
     --color-cyber: #00fff2;
     --color-cyber-red: #ff003c;
 }
@@ -74,9 +74,12 @@
     --color-text-secondary: var(--color-text-secondary);
     --color-border: var(--color-border);
     --color-dark: var(--color-dark);
-     
+
     --color-cyber: var(--color-cyber);
     --color-cyber-red: var(--color-cyber-red);
+
+    --clip-modal: polygon(0 0, 100% 0, 100% calc(100% - 40px), calc(100% - 40px) 100%, 0% 100%);
+    --clip-img: polygon(0 0, 100% 0, 100% 85%, 90% 100%, 0 100%);
 
     /* Tipografia */
     --font-title: "Poppins", "Saira", sans-serif;

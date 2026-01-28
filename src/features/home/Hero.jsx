@@ -85,8 +85,7 @@ const Hero = ( { className }) => {
         ease: "power2.out",
       });
 
-      // Outra forma de animações em conjunto
-
+      // Outra forma de animações em conjunto, colocando dois no mesmo array
       tl.to([drawThirdPaths, drawFourthPaths], {
         opacity: 1,
         duration: 0.6,
