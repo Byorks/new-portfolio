@@ -194,9 +194,6 @@
 
 }
 
-/* @layer utilities {
-   
-} */
 
 /* Use essa camada para classes mais complexas onde vc ainda almeje sobrescrever com classes utilitárias com card btn badge */
 @layer components {
@@ -415,8 +412,21 @@
         scale: -1 -1;
     }
 
+    .cyber-modal {
+        clip-path: var(--clip-modal);
+    }
+
+    .clip-modal-lateral {
+        clip-path: polygon(0 0, 0 100%, 100% calc(100% - 6px), 100% 6px);
+    }
+
+    .clip-img {
+        clip-path: var(--clip-img);
+    }
 }
 
+
+@layer utilities {}
 
 /* Automaticamente pega o valor do SO o usuário */
 @media (prefers-color-scheme: light) {

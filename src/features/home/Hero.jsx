@@ -2,7 +2,7 @@ import { useRef } from "react";
 import arrowBottom from "../../assets/image/ui/seta.svg";
 import { gsap, ScrollTrigger, SplitText } from "../../assets/lib/gsap";
 import { useGSAP } from "@gsap/react";
-import GlitchTitle from "./GlitchTitle";
+import GlitchTitle from "../../components/GlitchTitle";
 import flicker from "../../animations/flicker";
 
 const Hero = ( { className }) => {

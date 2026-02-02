@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import { useGSAP, gsap } from "../../assets/lib/gsap";
-import scrambleTech from "../../animations/scrumbleText";
-import ProjectCard from "./ProjectCard";
+import scrambleTech from "../../animations/scrambleTech";
+import ProjectCard from "../../components/ProjectCard";
 import { useProjects } from "../../hooks/useProjects";
 
 const ProjectsSection = () => {
@@ -46,7 +46,7 @@ const ProjectsSection = () => {
         duration: 0.6,
         ease: "power2.out",
       },
-      "<", // overlap suave
+      "<",
     );
 
     scrambleTech(tl, titleRef.current, "Projetos");
@@ -62,8 +62,7 @@ const ProjectsSection = () => {
       ref={containerRef}
       className="min-h-[50dvh] w-full flex items-center "
     >
-      <div className="border border-amber-100 max-w-6xl lg:max-w-7xl w-full h-full mx-auto flex flex-col ">
-       
+      <div className="border border-amber-100 max-w-6xl lg:max-w-7xl w-full h-full mx-auto flex flex-col">
         <div className="w-full relative px-6 sm:px-8 my-6 md:my-11">
           {/* Linha horizontal */}
           <div ref={lineRef} className="h-px bg-white origin-left scale-x-0" />
@@ -86,7 +85,7 @@ const ProjectsSection = () => {
             // substituir por map para pegar todos os projetos
             projects.map((p) => <ProjectCard key={p.id} project={p} />)
           ) : (
-            <p>Nenhum projeto encontrado.</p>
+            (() => console.log(error), (<p>Nenhum projeto encontrado.</p>))
           )}
         </div>
       </div>

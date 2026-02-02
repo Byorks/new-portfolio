@@ -1,4 +1,5 @@
-import Header from "./Header";
+import ContactSection from "./ContactSection";
+import Header from "../../components/Header";
 import Hero from "./Hero";
 import ProjectsSection from "./ProjectsSection";
 import TechnologiesSection from "./TechnologiesSection";
@@ -16,6 +17,8 @@ const HomePage = () => {
         <TechnologiesSection />
 
         <ProjectsSection />
+
+        <ContactSection />
       </main>
     </>
   );

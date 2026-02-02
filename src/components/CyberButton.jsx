@@ -5,7 +5,7 @@ const CyberButton = ({
   className = "",
   borderColor = "var(--accent)", // Cor customizável
   borderWidth = "1px", // Espessura customizável
-  buttonColor = "bg-primary/90"
+  buttonColor = "bg-primary/90",
 }) => {
   const glitchVars = {
     "--shimmy-distance": "5",
@@ -43,15 +43,16 @@ const CyberButton = ({
         }}
       />
 
-      {/* 1. Backdrop Principal */}
+      {/* 1. Backdrop Principal - retirei a classe backdrop-blur-md, as vezes buga */}
       <span
-        className={`absolute inset-0 z-0 backdrop-blur-md hover:bg-background group-hover:bg-background transition-colors duration-200 ${buttonColor}`}
+        className={`absolute inset-0 z-0  hover:bg-background group-hover:bg-background transition-colors duration-200 ${buttonColor}`}
         style={{
           clipPath: mainClip,
           inset: borderWidth, // Aqui cria o efeito de borda
         }}
       >
-        <span className="absolute bottom-0 right-0 w-3 h-3 bg-cyber after:content-[''] after:absolute after:top-1/2 after:left-1/2 after:-translate-x-1/2 after:-translate-y-1/2 after:w-[200%] after:h-[1px] after:bg-black after:rotate-135" />
+        {/* Aqui é um triangulo opcional que fica no canto do botão */}
+        {/* <span className="absolute bottom-0 right-0 w-3 h-3 bg-cyber after:content-[''] after:absolute after:top-1/2 after:left-1/2 after:-translate-x-1/2 after:-translate-y-1/2 after:w-[200%] after:h-[1px] after:bg-black after:rotate-135" /> */}
       </span>
 
       {/* 2. Conteúdo Normal */}
@@ -91,5 +92,8 @@ const CyberButton = ({
     </button>
   );
 };
+
+// TO-DO
+// Criar um ícone opcional ou outro botão com ícone
 
 export default CyberButton;

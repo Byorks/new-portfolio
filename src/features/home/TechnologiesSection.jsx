@@ -1,9 +1,9 @@
 import React from "react";
 import { useRef } from "react";
 import { gsap, useGSAP } from "../../assets/lib/gsap";
-import InfiniteMarquee from "./InfiniteMarquee";
+import InfiniteMarquee from "../../components/InfiniteMarquee";
 import flicker from "../../animations/flicker";
-import scrambleTech from "../../animations/scrumbleText";
+import scrambleTech from "../../animations/scrambleTech";
 
 const TechnologiesSection = () => {
   // criando array de refs
@@ -44,7 +44,7 @@ const TechnologiesSection = () => {
       ref={containerRef}
       className="min-h-[50dvh] w-full flex items-center"
     >
-      <div className="max-w-6xl lg:max-w-7xl w-full h-full mx-auto flex flex-col gap-4 md:gap-11">
+      <div className="max-w-6xl lg:max-w-7xl w-full h-full mx-auto flex flex-col">
         <div className=" p-6 sm:p-11 flex justify-center gap-4 sm:gap-24 ">
           <svg
             ref={(el) => (svgDivRefs.current[0] = el)}
