@@ -22,7 +22,7 @@
 :root {
     /* Dark theme (default) */
     --color-primary: oklch(0.6665 0.2032 297.13);
-    --color-secondary: #333248;
+    --color-secondary: #333248; /* MidnightViolet-900 */
     --color-background: oklch(0.2238 0.0404 289.27);
     --color-surface: #2B2D42;
     --color-text: #ffffff;
@@ -86,8 +86,6 @@
     --font-body: 'DM Sans', "Inter", sans-serif, i-sans-serif, system-ui;
 
     --animate-glitch: glitch 2s infinite;
-
-    /* KEYFRAMES EM SINTAXE CSS PURA */
 
     @keyframes glitch {
         0% {
