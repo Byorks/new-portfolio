@@ -36,7 +36,7 @@ export const ContactForm = () => {
           </label>
           <input
             {...register("name")}
-            className={`w-full px-4 py-3 rounded border border-zinc-50 outline-none transition-all ${errors.name ? "border-red-400 focus:border-red-500" : "border-zinc-200 focus:border-primary"}`}
+            className={`w-full px-4 py-3 rounded border border-zinc-50 outline-none transition-all ${errors.name ? "border-red-400 focus:border-red-500" : "border-zinc-200 focus:ring-primary"}`}
             placeholder="Ex: Eduardo Audi"
           />
         </div>
@@ -50,11 +50,11 @@ export const ContactForm = () => {
         {/* Campo email */}
         <div>
           <label className="block text-xs font-bold tracking-wider mb-1 ml-1">
-            Nome
+            Email
           </label>
           <input
             {...register("email")}
-            className={`w-full px-4 py-3 rounded border border-zinc-50 outline-none transition-all ${errors.name ? "border-red-400 focus:border-red-500" : "border-zinc-200 focus:border-primary"}`}
+            className={`w-full px-4 py-3 rounded border border-zinc-50 outline-none transition-all ${errors.name ? "border-red-400 focus:border-red-500" : "border-zinc-200 focus:ring-primary"}`}
             placeholder="Ex: seu@email.com"
           />
         </div>
@@ -74,7 +74,7 @@ export const ContactForm = () => {
                 ${
                   errors.message
                     ? "border-red-400 focus-ring-2 focus:ring-red-100"
-                    : "border-neutral-200 focus:border-primary focus:ring-4 focus:ring-indigo-50"
+                    : "border-neutral-200 focus:border-primary focus:ring-1 focus:ring-primary"
                 }`}
           />
 
@@ -84,7 +84,7 @@ export const ContactForm = () => {
                 {errors.message.message}
               </span>
             ) : (
-              <p>Evite compartilhar senhas ou dados sensíveis.</p>
+              <p className="text-xs">Evite compartilhar senhas ou dados sensíveis.</p>
             )}
 
             {/* Contador de caracteres */}

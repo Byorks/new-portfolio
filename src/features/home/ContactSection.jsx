@@ -61,7 +61,7 @@ const ContactSection = () => {
         <h2 ref={titleRef} className="title-h2 text-center"></h2>
 
         <div className="w-full mx-auto grid grid-cols-4 md:grid-cols-12 py-12 px-6 sm:px-8">
-          <div className="border bg-red-800 col-span-6">
+          <div className="border col-span-6">
             <div>
               <p>Ficou com alguma dúvida ou deseja iniciar um projeto?</p>
               <p>Entre em contato para conversarmos.</p>
@@ -100,8 +100,13 @@ const ContactSection = () => {
                 />
               </svg>
             </div>
+
+            {/* Ícones de contato */}
+            <div>
+
+            </div>
           </div>
-          <div className=" bg-blue-300 col-span-5 col-end-13">
+          <div className="bg-blue-300 col-span-5 col-end-13">
             <ContactForm></ContactForm>
           </div>
         </div>
