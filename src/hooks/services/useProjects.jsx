@@ -1,5 +1,5 @@
-import { useFetch } from "./useFetch";
-import { PROJECTS_URL } from "../services/projectService";
+import { useFetch } from "../useFetch";
+import { PROJECTS_URL } from "../../services/projectService";
 
 export const useProjects = () => {
   const { data, loading, error } = useFetch(PROJECTS_URL);

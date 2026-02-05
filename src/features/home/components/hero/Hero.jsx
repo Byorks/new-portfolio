@@ -1,9 +1,9 @@
 import { useRef } from "react";
-import arrowBottom from "../../assets/image/ui/seta.svg";
-import { gsap, ScrollTrigger, SplitText } from "../../assets/lib/gsap";
+import arrowBottom from "../../../../assets/image/ui/seta.svg";
+import { gsap, ScrollTrigger, SplitText } from "../../../../lib/gsap";
 import { useGSAP } from "@gsap/react";
-import GlitchTitle from "../../components/GlitchTitle";
-import flicker from "../../animations/flicker";
+import GlitchTitle from "../../../../components/GlitchTitle";
+import flicker from "../../../../animations/flicker";
 
 const Hero = ( { className }) => {
   const containerRef = useRef();

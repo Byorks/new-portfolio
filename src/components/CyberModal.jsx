@@ -1,4 +1,4 @@
-import { gsap, useGSAP } from "../assets/lib/gsap";
+import { gsap, useGSAP } from "../lib/gsap";
 import { createPortal } from "react-dom";
 import CyberButton from "./CyberButton";
 import { useRef } from "react";

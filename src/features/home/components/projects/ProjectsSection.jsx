@@ -1,8 +1,8 @@
 import { useRef } from "react";
-import { useGSAP, gsap } from "../../assets/lib/gsap";
-import scrambleTech from "../../animations/scrambleTech";
-import ProjectCard from "../../components/ProjectCard";
-import { useProjects } from "../../hooks/useProjects";
+import { useGSAP, gsap } from "../../../../lib/gsap";
+import scrambleTech from "../../../../animations/scrambleTech";
+import ProjectCard from "../../../../components/ProjectCard";
+import { useProjects } from "../../../../hooks/services/useProjects";
 
 const ProjectsSection = () => {
   const { projects, loading, error } = useProjects();
@@ -62,7 +62,7 @@ const ProjectsSection = () => {
       ref={containerRef}
       className="min-h-[50dvh] w-full flex items-center "
     >
-      <div className="border border-amber-100 max-w-6xl lg:max-w-7xl w-full h-full mx-auto flex flex-col">
+      <div className="max-w-6xl lg:max-w-7xl w-full h-full mx-auto flex flex-col">
         <div className="w-full relative px-6 sm:px-8 my-6 md:my-11">
           {/* Linha horizontal */}
           <div ref={lineRef} className="h-px bg-white origin-left scale-x-0" />

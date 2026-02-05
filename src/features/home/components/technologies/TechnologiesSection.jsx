@@ -1,9 +1,9 @@
 import React from "react";
 import { useRef } from "react";
-import { gsap, useGSAP } from "../../assets/lib/gsap";
-import InfiniteMarquee from "../../components/InfiniteMarquee";
-import flicker from "../../animations/flicker";
-import scrambleTech from "../../animations/scrambleTech";
+import { gsap, useGSAP } from "../../../../lib/gsap";
+import InfiniteMarquee from "../../../../components/InfiniteMarquee";
+import flicker from "../../../../animations/flicker";
+import scrambleTech from "../../../../animations/scrambleTech";
 
 const TechnologiesSection = () => {
   // criando array de refs

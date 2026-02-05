@@ -23,3 +23,4 @@ const Header = () => {
 }
 
 export default Header;
+// TODO -> Colocar animação com stagger nos li

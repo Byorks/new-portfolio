@@ -1,8 +1,9 @@
-import ContactSection from "./ContactSection";
+import ContactSection from "./components/contact/ContactSection";
 import Header from "../../components/Header";
-import Hero from "./Hero";
-import ProjectsSection from "./ProjectsSection";
-import TechnologiesSection from "./TechnologiesSection";
+import Hero from "./components/hero/Hero";
+import ProjectsSection from "./components/projects/ProjectsSection";
+import TechnologiesSection from "./components/technologies/TechnologiesSection";
+import AboutMeSection from "./components/about/AboutSection";
 
 const HomePage = () => {
   return (
@@ -19,6 +20,8 @@ const HomePage = () => {
         <ProjectsSection />
 
         <ContactSection />
+
+        <AboutMeSection />
       </main>
     </>
   );
