@@ -1,26 +1,26 @@
 const CyberSquareButton = ({
-  link = "",
-  icon = "V",
+  onClick,
   borderColor = "bg-contrast",
   border = "2px",
   backgroundColor = "bg-surface",
   detail = true,
   detailColor = "bg-contrast",
+  children
 }) => {
   return (
-    <a target="_blank" href={link}>
-      <button className="group relative p-1 flex items-center justify-center cursor-pointer">
+    
+      <button onClick={onClick} className="group relative p-1 flex items-center justify-center cursor-pointer active:scale-95 transition-transform duration-200 ease-in-out">
         {/* 1. Borda Externa (Contorno fino) */}
         <div
           className={`relative clip-icon w-16 h-16 ${borderColor} flex items-center justify-center transition-colors group-hover:bg-primary`}
         >
           {/* 2. O "Gap" e o Fundo Interno (Cor azulada escura do Behance) */}
           <div
-            className={`clip-icon w-[calc(100%-${border})] h-[calc(100%-${border})] ${backgroundColor} group-hover:bg-midnightviolet-950-main flex items-center justify-center`}
+            className={`clip-icon w-[calc(100%-2px)] h-[calc(100%-2px)] ${backgroundColor} group-hover:bg-midnightviolet-950-main flex items-center justify-center`}
           >
             {/* 3. O Logo / Texto */}
-            <span className="text-white text-3xl font-bold tracking-tighter">
-              {icon}
+            <span className="text-white text-3xl font-bold tracking-tighter group-hover:text-primary">
+              {children}
             </span>
             {/* Detalhe no topo do ícone */}
             {detail && (
@@ -36,7 +36,7 @@ const CyberSquareButton = ({
           </div>
         </div>
       </button>
-    </a>
+ 
   );
 };
 

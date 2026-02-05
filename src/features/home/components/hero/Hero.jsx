@@ -48,7 +48,7 @@ const Hero = ( { className }) => {
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: containerRef.current,
-          start: "top 80%",
+          start: 'top 80%',
           markers: false,
         },
       });
@@ -56,7 +56,7 @@ const Hero = ( { className }) => {
       // estado inicial do svg, não desenhado
       gsap.set(
         [drawFirstPaths, drawSecondPaths, drawThirdPaths, drawFourthPaths],
-        { drawSVG: "0% 0%" }
+        { drawSVG: '0% 0%' }
       );
 
       gsap.set([drawThirdPaths, drawFourthPaths], { opacity: 0 });
@@ -69,20 +69,20 @@ const Hero = ( { className }) => {
       tl.to([firstPath2Ref.current, secondPathRef.current], {
         rotation: 370,
         duration: 0.5,
-        ease: "none",
-        svgOrigin: "17 17.13",
+        ease: 'none',
+        svgOrigin: '17 17.13',
       }).to([firstPath2Ref.current, secondPathRef.current], {
         rotation: 360,
         duration: 0.15,
-        ease: "power4.out",
-        svgOrigin: "17 17.13",
+        ease: 'power4.out',
+        svgOrigin: '17 17.13',
       });
 
       // linhas do svg
       tl.to([drawFirstPaths, drawSecondPaths], {
-        drawSVG: "0% 100%",
+        drawSVG: '0% 100%',
         duration: .5,
-        ease: "power2.out",
+        ease: 'power2.out',
       });
 
       // Outra forma de animações em conjunto, colocando dois no mesmo array
@@ -99,16 +99,16 @@ const Hero = ( { className }) => {
             height: 100,
           },
           duration: 1,
-          ease: "power2.out",
+          ease: 'power2.out',
         },
-        "<" // "<" significa comece junto com a animação anterior
+        '<' // '<' significa comece junto com a animação anterior
       );
 
       // Desenho do X
       tl.to([drawThirdPaths, drawFourthPaths], {
-        drawSVG: "0% 100%",
+        drawSVG: '0% 100%',
         duration: 0.5,
-        ease: "power2.out",
+        ease: 'power2.out',
       });
 
       // 1. Animação do título
@@ -117,7 +117,7 @@ const Hero = ( { className }) => {
         opacity: 1,
         duration: 0.8,
         stagger: 0.05,
-        ease: "power3.out",
+        ease: 'power3.out',
       })
 
         // 2. Animação do subtítulo (começa logo após o título terminar)
@@ -128,9 +128,9 @@ const Hero = ( { className }) => {
             opacity: 1,
             duration: 0.8,
             stagger: 0.04,
-            ease: "power3.out",
+            ease: 'power3.out',
           },
-          "-=0.4"
+          '-=0.4'
         ); // Overlap leve de 0.4s para fluir melhor (ajuste a gosto)
       // após terminar animação de subTitleSplit.chars
 
@@ -140,17 +140,17 @@ const Hero = ( { className }) => {
         opacity: 0,
         y: -20, // sobe um pouco (ou +20 para descer)
         duration: 0.3,
-        ease: "power2.in",
+        ease: 'power2.in',
       })
       .set(subTitleRef.current, {
         opacity: 0,
-        pointerEvents: "none",
+        pointerEvents: 'none',
       });
 
       tl.to(glitchWrapperRef.current, {
         opacity: 1,
         duration: 0.3,
-        ease: "power2.out",
+        ease: 'power2.out',
       });
 
       // 3. Flicker

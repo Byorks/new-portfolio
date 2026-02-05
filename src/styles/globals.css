@@ -223,7 +223,41 @@
 
 /* Use essa camada para classes mais complexas onde vc ainda almeje sobrescrever com classes utilitárias com card btn badge */
 @layer components {
-    .title-h2 {
+        /* Adicione no seu CSS global ou no componente */
+    .cyber-portrait img {
+    image-rendering: pixelated; /* ou crisp-edges – dá vibe retro */
+    transition: filter 0.6s ease-out;
+    }
+
+    /* Opcional: overlay glitch no container */
+    .cyber-portrait::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to right,
+        transparent 0%,
+        rgba(0, 255, 255, 0.08) 50%,
+        transparent 100%
+    );
+    opacity: 0;
+    mix-blend-mode: screen;
+    pointer-events: none;
+    }
+
+    .cyber-portrait:hover::after,
+    /* ou durante a transição */
+    .cyber-portrait.active::after {
+    animation: glitch-overlay 1.2s ease-out;
+    }
+
+    @keyframes glitch-overlay {
+    0% { opacity: 0; transform: translateX(-100%); }
+    20% { opacity: 0.7; transform: translateX(0); }
+    80% { opacity: 0.4; transform: translateX(100%); }
+    100% { opacity: 0; }
+    }
+        .title-h2 {
         @apply text-xl sm:text-3xl;
     }
 
