@@ -90,6 +90,19 @@
     --font-body: 'DM Sans', "Inter", sans-serif, i-sans-serif, system-ui;
 
     /* --- Paleta de cores --- */
+    /* MediumPurple */
+    --color-mediumpurple-50:   oklch(0.976 0.014 304.1);  /* #F9F5FF */
+    --color-mediumpurple-100:  oklch(0.958 0.021 288.9);  /* #F0EFFF */
+    --color-mediumpurple-200:  oklch(0.896 0.06  301.1);  /* #E3D4FF */
+    --color-mediumpurple-300:  oklch(0.814 0.11  300.1);  /* #CDB2FF */
+    --color-mediumpurple-400:  oklch(0.689 0.183 294.4);  /* #A47FFF */
+    --color-mediumpurple-500:  oklch(0.599 0.238 295.2);  /* #9051FB */
+    --color-mediumpurple-600:  oklch(0.528 0.259 292.3);  /* #782EEF */
+    --color-mediumpurple-700:  oklch(0.468 0.241 291.5);  /* #651ED2 */
+    --color-mediumpurple-800:  oklch(0.414 0.201 293.7);  /* #571EAB */
+    --color-mediumpurple-900:  oklch(0.36  0.17  295.1);  /* #48198A */
+    --color-mediumpurple-950:  oklch(0.272 0.145 291.6);  /* #2D0566 */
+    
     /* MidnightViolet */
     --color-midnightviolet-950-main: oklch(0.224 0.04 289.3);   /* #1B182D */
     --color-midnightviolet-900:     oklch(0.328 0.039 286.1);   /* #333248 */
@@ -223,41 +236,7 @@
 
 /* Use essa camada para classes mais complexas onde vc ainda almeje sobrescrever com classes utilitárias com card btn badge */
 @layer components {
-        /* Adicione no seu CSS global ou no componente */
-    .cyber-portrait img {
-    image-rendering: pixelated; /* ou crisp-edges – dá vibe retro */
-    transition: filter 0.6s ease-out;
-    }
-
-    /* Opcional: overlay glitch no container */
-    .cyber-portrait::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(
-        to right,
-        transparent 0%,
-        rgba(0, 255, 255, 0.08) 50%,
-        transparent 100%
-    );
-    opacity: 0;
-    mix-blend-mode: screen;
-    pointer-events: none;
-    }
-
-    .cyber-portrait:hover::after,
-    /* ou durante a transição */
-    .cyber-portrait.active::after {
-    animation: glitch-overlay 1.2s ease-out;
-    }
-
-    @keyframes glitch-overlay {
-    0% { opacity: 0; transform: translateX(-100%); }
-    20% { opacity: 0.7; transform: translateX(0); }
-    80% { opacity: 0.4; transform: translateX(100%); }
-    100% { opacity: 0; }
-    }
-        .title-h2 {
+    .title-h2 {
         @apply text-xl sm:text-3xl;
     }
 
