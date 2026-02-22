@@ -81,15 +81,16 @@ const Hero = ( { className }) => {
       // linhas do svg
       tl.to([drawFirstPaths, drawSecondPaths], {
         drawSVG: '0% 100%',
-        duration: .5,
-        ease: 'power2.out',
+        duration: 0.3,
+        ease: 'power2.in',
       });
 
       // Outra forma de animações em conjunto, colocando dois no mesmo array
       tl.to([drawThirdPaths, drawFourthPaths], {
         opacity: 1,
-        duration: 0.6,
-      });
+        duration: 0.3,
+        ease: 'power2.in'
+      }), '<';
       
       tl.to(
         showThirdClipPath,
@@ -98,8 +99,8 @@ const Hero = ( { className }) => {
             y: 0,
             height: 100,
           },
-          duration: 1,
-          ease: 'power2.out',
+          duration: .3,
+          ease: 'power2.in',
         },
         '<' // '<' significa comece junto com a animação anterior
       );

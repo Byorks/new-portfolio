@@ -20,7 +20,7 @@ const TechnologiesSection = () => {
         start: "top 80%",
         end: "bottom 20%",
         // toggleActions: "restart pause resume pause",
-        markers: true,
+        markers: false,
       },
     });
 

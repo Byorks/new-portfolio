@@ -10,20 +10,17 @@ const ProjectsSection = () => {
 
   const containerRef = useRef();
   const titleRef = useRef();
-  // const svgDivRef = useRef();
   const projectCards = useRef();
   const lineRef = useRef();
   const verticalRef = useRef();
 
   // Animações
   useGSAP(() => {
-    // paths da div
-    // const divPaths = svgDivRef.current.querySelectorAll("line");
     // Configuração da timeline gsap
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: containerRef.current,
-        start: "top 80%",
+        start: "top 60%",
         end: "bottom 20%",
         toggleActions: "restart pause resume pause",
         markers: true,
@@ -94,3 +91,6 @@ const ProjectsSection = () => {
 };
 
 export default ProjectsSection;
+
+// To-do
+// Criar uma animação de loading para os projetos

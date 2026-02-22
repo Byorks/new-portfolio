@@ -17,7 +17,6 @@ const router = createBrowserRouter([
       // rotas privadas
     ]
   },
-
   // Depois montar uma 404 bonita
   // { path: "*", element: <NotFoundPage /> },
 ]);

@@ -1,6 +1,7 @@
 const CyberButton = ({
   label = "Upgrade",
   shortcut = "U",
+  icon = "",
   onClick,
   className = "",
   borderColor = "var(--accent)", // Cor customizável
@@ -57,7 +58,7 @@ const CyberButton = ({
 
       {/* 2. Conteúdo Normal */}
       <kbd className="z-10 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-background/80 text-[8px] font-bold text-text transition-colors group-hover:text-cyber group-hover:bg-black">
-        {shortcut}
+        {icon ? icon: shortcut}
       </kbd>
       {/* Hover de texto para branco */}
       <span className="z-10 font-bold tracking-tighter text-background group-hover:text-white">

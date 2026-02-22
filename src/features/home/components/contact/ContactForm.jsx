@@ -36,7 +36,7 @@ export const ContactForm = () => {
           </label>
           <input
             {...register("name")}
-            className={`w-full px-4 py-3 rounded border outline-none placeholder:text-midnightviolet-500/80 bg-midnightviolet-950-main focus:bg-slate-950 ease-in-out duration-300 transition-all ${errors.name ? "border-red-400 focus:border-red-500" : "border-midnightviolet-500 focus:border-primary focus:ring-1 focus:ring-primary"}`}
+            className={`w-full px-4 py-3 rounded border outline-none placeholder:text-midnightviolet-500/80 bg-midnightviolet-950-main focus:bg-slate-950 ease-in-out duration-300 transition-all autofill-fix ${errors.name ? "border-red-400 focus:border-red-500" : "border-midnightviolet-500 focus:border-primary focus:ring-1 focus:ring-primary"}`}
             placeholder="Ex: Eduardo Audi"
           />
           {errors.name && (
@@ -51,7 +51,7 @@ export const ContactForm = () => {
           </label>
           <input
             {...register("email")}
-            className={`w-full px-4 py-3 rounded border outline-none placeholder:text-midnightviolet-500/80 bg-midnightviolet-950-main focus:bg-slate-950 ease-in-out duration-300 transition-all ${errors.email ? "border-red-400 focus:border-red-500" : "border-midnightviolet-500 focus:border-primary focus:ring-1 focus:ring-primary"}`}
+            className={`w-full px-4 py-3 rounded border outline-none placeholder:text-midnightviolet-500/80 bg-midnightviolet-950-main focus:bg-slate-950 ease-in-out duration-300 transition-all autofill-fix ${errors.email ? "border-red-400 focus:border-red-500 " : "border-midnightviolet-500 focus:border-primary focus:ring-1 focus:ring-primary"}`}
             placeholder="Ex: seu@email.com"
           />
           {errors.email && (
@@ -70,7 +70,7 @@ export const ContactForm = () => {
             {...register("message")}
             rows="5"
             placeholder="Conte sobre a ideia ou projeto que deseja realizar..."
-            className={`w-full px-4 py-3 rounded border placeholder:text-midnightviolet-500/80 bg-midnightviolet-950-main focus:bg-slate-950 transition-all ease-in-out duration-300 outline-none resize-none 
+            className={`w-full px-4 py-3 rounded border placeholder:text-midnightviolet-500/80 bg-midnightviolet-950-main focus:bg-slate-950 transition-all ease-in-out duration-300 outline-none resize-none autofill-fix
                 ${
                   errors.message
                     ? "border-red-400 focus-ring-2 focus:ring-red-100"
