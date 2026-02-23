@@ -61,16 +61,19 @@ const ProjectCard = ({ project }) => {
             {project.description.objectives && (
               <div className="py-2">
                 <h4 className="text-2xl">Objetivos</h4>
-                <div className="w-full">{project.description.objectives}</div>
+                <div className="w-full">
+                  <p> {project.description.objectives}</p></div>
               </div>
             )}
 
             {project.description.challenges && (
               <div className="py-2">
                 <h4 className="text-2xl">Desafios</h4>
-                <div className="w-full">{project.description.challenges}</div>
+                <div className="w-full"><p>{project.description.challenges}
+                  </p></div>
               </div>
             )}
+          
           </section>
         </CyberModal>
       )}

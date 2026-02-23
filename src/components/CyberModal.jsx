@@ -3,6 +3,9 @@ import { createPortal } from "react-dom";
 import CyberButton from "./CyberButton";
 import { useEffect, useRef } from "react";
 import { LiaExternalLinkAltSolid } from "react-icons/lia";
+import GalleryCarousel from "./GalleryCarousel";
+import useEmblaCarousel from "embla-carousel-react"; // Hook principal
+import Autoplay from "embla-carousel-autoplay"; // Opcional para auto-slide
 
 const CyberModal = ({
   isOpen,
@@ -16,7 +19,6 @@ const CyberModal = ({
   githubLink = "",
   children,
 }) => {
-
   // Referências
   const overlayRef = useRef(null);
   const modalRef = useRef(null);
@@ -41,7 +43,9 @@ const CyberModal = ({
       />
     </svg>
   );
-  const externalIcon = (<LiaExternalLinkAltSolid className="text-contrast" size={ "2em"} />)
+  const externalIcon = (
+    <LiaExternalLinkAltSolid className="text-contrast" size={"2em"} />
+  );
 
   useGSAP(() => {
     if (isOpen) {
@@ -138,13 +142,13 @@ const CyberModal = ({
     if (!isOpen) return;
 
     const handleEsc = (e) => {
-      if(e.key === "Escape") {
+      if (e.key === "Escape") {
         onClose();
       }
     };
 
     window.addEventListener("keydown", handleEsc);
-    return () => window.removeEventListener("keydown", handleEsc); 
+    return () => window.removeEventListener("keydown", handleEsc);
   }, [isOpen, onClose]);
 
   const handleOverlayClick = (e) => {
@@ -153,26 +157,44 @@ const CyberModal = ({
     }
   };
 
+  // Evita scroll no body quando modal aberto
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isOpen]);
+
   if (!isOpen) return null;
 
   return createPortal(
     <div
       ref={overlayRef}
       onClick={handleOverlayClick}
-      className="fixed inset-0 z-100 hidden items-center justify-center bg-black/60 backdrop-blur-sm p-4 opacity-0"
+      className="fixed inset-0 z-100 justify-center bg-black/60 backdrop-blur-sm p-4 pt-8 md:pt-16 opacity-0 overflow-hidden"
     >
       {/* Estrutura do Modal com Borda */}
-      <div ref={modalRef} className="relative w-full max-w-5xl">
+      <div
+        ref={modalRef}
+        onClick={(e) => e.stopPropagation()}
+        className="relative h-fit w-full max-w-6xl xl:max-w-7xl"
+      >
         {/* Lateral estilizada */}
         <div className="absolute left-1/1 top-8 w-2 h-2/5 bg-cyber/50 clip-modal-lateral pointer-events-none"></div>
 
         <div
-          className="cyber-modal relative overflow-visible bg-cyber p-px" // O p-[1px] ou p-px" é a nossa borda
+          className="cyber-modal relative overflow-visible bg-cyber p-px " // O p-[1px] ou p-px" é a nossa borda
         >
-          {/* Fundo interno do Modal */}
-          <div className="cyber-modal  bg-neutral-950 p-8">
+          {/* Parte interna do modal*/}
+          {/* colocar um autora max aqui*/}
+          <div className="h-full max-h-[95dvh] md:max-h-[80dvh] cyber-modal bg-neutral-950 p-8 flex flex-col">
             {/* Cabeçalho */}
-            <header className="mb-8 border-b border-cyber/20 flex justify-between items-center">
+            <header className="shrink-0 mb-8 border-b border-cyber/20 flex justify-between items-center">
               <div>
                 <p className="text-[10px] text-cyber opacity-50 uppercase tracking-[0.2em]">
                   Project Archive
@@ -227,44 +249,54 @@ const CyberModal = ({
               </div>
             </header>
 
-            {/* Conteúdo */}
-            <div
-              ref={contentRef}
-              className="font-mono text-cyber/80 leading-relaxed mb-8"
-            >
-              {children}
-            </div>
+            <div className="flex-1 flex flex-col md:flex-row min-h-0 gap-8 overflow-hidden">
+              {/* LADO ESQUERDO: TEXTO (Scrollable) */}
+              <div
+                ref={contentRef}
+                className="flex-1 font-mono text-cyber/80 leading-relaxed overflow-y-auto pr-4 scrollbar-thin scrollbar-thumb-cyber"
+              >
+                <div className="space-y-4">{children}</div>
+              </div>
 
-            {/* GRID DE IMAGENS DINÂMICAS */}
-            <div
-              ref={itemsRef}
-              className="grid grid-cols-1 md:grid-cols-3 gap-6"
-            >
-              {images.map((img, index) => (
-                <div
-                  key={index}
-                  className="portfolio-item group relative h-44 cursor-crosshair bg-cyber/10 p-[1px] clip-img"
-                >
-                  <div className=" h-44 w-full overflow-hidden bg-black clip-img">
-                    <img
-                      src={img.url}
-                      alt={img.alt}
-                      className="h-full w-full object-cover opacity-80 transition-all duration-500 group-hover:scale-110 group-hover:opacity-100 group-hover:rotate-1"
-                    />
-                    {/* Overlay decorativo na imagem */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-cyber/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+              {images.length > 0 && (
+                <div className="w-full md:w-80 lg:w-96 shrink-0 flex flex-col border-t md:border-t-0 md:border-l border-cyber pt-6 md:pt-0 md:pl-6">
+                  <p className="text-[10px] text-cyber/40 uppercase mb-4 tracking-widest">
+                    Visual_Assets
+                  </p>
+
+                  <div
+                    ref={itemsRef}
+                    className="grid grid-cols-2 md:grid-cols-1 gap-4 overflow-y-auto pr-4 scrollbar-none  scrollbar-thin scrollbar-thumb-cyber"
+                  >
+                    {images.map((img, index) => (
+                      <div
+                        key={index}
+                        className="portfolio-item group relative max-h-44 cursor-crosshair bg-cyber/30 p-px clip-img"
+                      >
+                        <div className="h-full w-full bg-black clip-img">
+                          <img
+                            src={img.url}
+                            alt={img.alt}
+                            loading="lazy"
+                            className="h-full w-full object-cover opacity-80 transition-all ease-out duration-500 group-hover:scale-110 group-hover:opacity-100 group-hover:rotate-1"
+                          />
+                          {/* Overlay decorativo na imagem */}
+                          <div className="absolute inset-0 bg-gradient-to-t from-cyber/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                        </div>
+
+                        {/* Badge de ID da imagem */}
+                        <span className="absolute top-2 left-2 bg-cyber px-1 text-[8px] font-bold text-black uppercase">
+                          Data_Node_{index + 1}
+                        </span>
+                      </div>
+                    ))}
                   </div>
-
-                  {/* Badge de ID da imagem */}
-                  <span className="absolute top-2 left-2 bg-cyber px-1 text-[8px] font-bold text-black uppercase">
-                    Data_Node_{index + 1}
-                  </span>
                 </div>
-              ))}
+              )}
             </div>
 
             {/* Ações */}
-            {/* Quero colocar um link para github por exeplo, ou até o site se for o caso */}
+            {/* Quero colocar um link para github por exemplo, ou até o site se for o caso */}
             <footer className="flex justify-end gap-4 mt-10">
               <CyberButton
                 label="Cancelar"
@@ -312,3 +344,5 @@ export default CyberModal;
 // TO-DO
 // Colocar um backdrop blur no modal, acho que vou precisar reestruturar pra fazer isso
 // Alterar tamanho de images
+// Mais de 3 imagens no mobile está péssimo, ocupando todo o modal.
+//  Portanto preciso implementar um carrossel, vai ficar melhor visualmente

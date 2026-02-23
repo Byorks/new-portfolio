@@ -465,6 +465,18 @@
 
     .clip-icon {
         clip-path: polygon(0 0, 100% 0, 100% 82%, 82% 100%, 0 100%);
+    }  
+    
+    .scrollbar-thin::-webkit-scrollbar {
+        height: 4px;
+        width: 4px;
+    }
+    .scrollbar-thumb-cyber::-webkit-scrollbar-thumb {
+        background: var(--color-cyber); /* Cor da sua variável cyber */
+        border-radius: 0px;
+    }
+    .scrollbar-track-transparent::-webkit-scrollbar-track {
+        background: rgba(0, 255, 242, 0.05);
     }
 }
 

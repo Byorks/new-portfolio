@@ -1,7 +1,8 @@
 import { useEffect } from "react";
 import { useState } from "react";
+import { collection, getDocs } from "firebase/firestore";
 
-export const useFetch = (url) => {
+export const useFetch = (db, collectionName) => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -14,16 +15,18 @@ export const useFetch = (url) => {
       setError(null);
 
       try {
-        const response = await fetch(url, { signal: controller.signal });
+        // const response = await fetch(url, { signal: controller.signal });
+        const querySnapshot = await getDocs(collection(db, collectionName));
+        const projectsData = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
 
-        if (!response.ok) {
-          throw new Error(`Erro HTTP: ${response.status}`);
-        }
+        // if (!response.ok) {
+        //   throw new Error(`Erro HTTP: ${response.status}`);
+        // }
 
-        const result = await response.json();
-        setData(result);
+        // const result = await response.json();
+        setData(projectsData);
       } catch (err) {
-        if (err.name !== "ÄbortError") {
+        if (err.name !== "AbortError") {
           setError(err.message || "Erro ao buscar dados");
         }
       } finally {
@@ -34,6 +37,6 @@ export const useFetch = (url) => {
     fetchData();
 
     return () => controller.abort();
-  }, [url]); // Se a url mudar refaz o fetch
+  }, [db, collectionName]); // Se a url mudar refaz o fetch
   return { data, loading, error };
 };

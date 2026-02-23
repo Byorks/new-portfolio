@@ -35,22 +35,6 @@
             "Styled-Components",
             "JavaScript"
         ]
-    },
-    {
-        "id": "2",
-        "title": "Blablabla",
-        "description": {
-            "resume": "Projeto desenvolvido para aprofundar conhecimentos em React e estilização com MUI e styled-components, explorando customizações dinâmicas via props e boas práticas de componentização.",
-            "objectives": "",
-            "challenges": "",
-            "results": ""
-        },
-        "cover": "",
-        "images": "",
-        "github": "",
-        "link": "",
-        "tags": [
-            "React"
-        ]
     }
+    
 ]
