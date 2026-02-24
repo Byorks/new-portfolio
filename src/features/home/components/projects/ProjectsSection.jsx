@@ -23,7 +23,7 @@ const ProjectsSection = () => {
         start: "top 60%",
         end: "bottom 20%",
         toggleActions: "restart pause resume pause",
-        markers: true,
+        markers: false,
       },
     });
 
@@ -56,6 +56,7 @@ const ProjectsSection = () => {
 
   return (
     <section
+      id="projects"
       ref={containerRef}
       className="min-h-[50dvh] w-full py-4"
     >

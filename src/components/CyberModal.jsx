@@ -176,7 +176,7 @@ const CyberModal = ({
     <div
       ref={overlayRef}
       onClick={handleOverlayClick}
-      className="fixed inset-0 z-100 justify-center bg-black/60 backdrop-blur-sm p-4 pt-8 md:pt-16 opacity-0 overflow-hidden"
+      className="fixed inset-0 z-100 justify-center bg-black/30 backdrop-blur-sm p-4 pt-8 md:pt-16 opacity-0 overflow-hidden"
     >
       {/* Estrutura do Modal com Borda */}
       <div
@@ -192,7 +192,7 @@ const CyberModal = ({
         >
           {/* Parte interna do modal*/}
           {/* colocar um autora max aqui*/}
-          <div className="h-full max-h-[95dvh] md:max-h-[80dvh] cyber-modal bg-neutral-950 p-8 flex flex-col">
+          <div className="h-full max-h-[95dvh] md:max-h-[80dvh] cyber-modal bg-dark p-8 flex flex-col">
             {/* Cabeçalho */}
             <header className="shrink-0 mb-8 border-b border-cyber/20 flex justify-between items-center">
               <div>
@@ -259,7 +259,7 @@ const CyberModal = ({
               </div>
 
               {images.length > 0 && (
-                <div className="w-full md:w-80 lg:w-96 shrink-0 flex flex-col border-t md:border-t-0 md:border-l border-cyber pt-6 md:pt-0 md:pl-6">
+                <div className="w-full md:w-80 lg:w-2/6 shrink-0 flex flex-col border-t md:border-t-0 md:border-l border-cyber pt-6 md:pt-0 md:pl-6">
                   <p className="text-[10px] text-cyber/40 uppercase mb-4 tracking-widest">
                     Visual_Assets
                   </p>
@@ -271,7 +271,7 @@ const CyberModal = ({
                     {images.map((img, index) => (
                       <div
                         key={index}
-                        className="portfolio-item group relative max-h-44 cursor-crosshair bg-cyber/30 p-px clip-img"
+                        className="portfolio-item group relative aspect-video max-h-44 cursor-crosshair bg-cyber/30 p-px clip-img"
                       >
                         <div className="h-full w-full bg-black clip-img">
                           <img
@@ -302,7 +302,7 @@ const CyberModal = ({
                 label="Cancelar"
                 shortcut="ESC"
                 onClick={onClose}
-                className="scale-95"
+                className="scale-95 hidden sm:inline-flex"
                 borderColor="rgba(0, 255, 242, 0.3)"
                 buttonColor="bg-cyber"
               />

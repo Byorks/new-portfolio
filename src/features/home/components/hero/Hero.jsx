@@ -5,7 +5,7 @@ import { useGSAP } from "@gsap/react";
 import GlitchTitle from "../../../../components/GlitchTitle";
 import flicker from "../../../../animations/flicker";
 
-const Hero = ( { className }) => {
+const Hero = ({ className }) => {
   const containerRef = useRef();
   const titleRef = useRef();
   const subTitleRef = useRef();
@@ -27,7 +27,7 @@ const Hero = ( { className }) => {
       const drawThirdPaths = thirdSvgRef.current.querySelectorAll("path");
       const drawFourthPaths = fourthSvgRef.current.querySelectorAll("path");
       const showThirdClipPath = thirdSvgRef.current.querySelector(
-        "#clip0_2078_55 rect"
+        "#clip0_2078_55 rect",
       );
       // Cria o SplitText no elemento h1
       const titleSplit = new SplitText(titleRef.current, {
@@ -48,7 +48,7 @@ const Hero = ( { className }) => {
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: containerRef.current,
-          start: 'top 80%',
+          start: "top 80%",
           markers: false,
         },
       });
@@ -56,11 +56,11 @@ const Hero = ( { className }) => {
       // estado inicial do svg, não desenhado
       gsap.set(
         [drawFirstPaths, drawSecondPaths, drawThirdPaths, drawFourthPaths],
-        { drawSVG: '0% 0%' }
+        { drawSVG: "0% 0%" },
       );
 
       gsap.set([drawThirdPaths, drawFourthPaths], { opacity: 0 });
-      
+
       // Rotação do +
       gsap.set([firstPath2Ref.current, secondPathRef.current], {
         rotation: 720,
@@ -69,29 +69,30 @@ const Hero = ( { className }) => {
       tl.to([firstPath2Ref.current, secondPathRef.current], {
         rotation: 370,
         duration: 0.5,
-        ease: 'none',
-        svgOrigin: '17 17.13',
+        ease: "none",
+        svgOrigin: "17 17.13",
       }).to([firstPath2Ref.current, secondPathRef.current], {
         rotation: 360,
         duration: 0.15,
-        ease: 'power4.out',
-        svgOrigin: '17 17.13',
+        ease: "power4.out",
+        svgOrigin: "17 17.13",
       });
 
       // linhas do svg
       tl.to([drawFirstPaths, drawSecondPaths], {
-        drawSVG: '0% 100%',
+        drawSVG: "0% 100%",
         duration: 0.3,
-        ease: 'power2.in',
+        ease: "power2.in",
       });
 
       // Outra forma de animações em conjunto, colocando dois no mesmo array
-      tl.to([drawThirdPaths, drawFourthPaths], {
+      (tl.to([drawThirdPaths, drawFourthPaths], {
         opacity: 1,
         duration: 0.3,
-        ease: 'power2.in'
-      }), '<';
-      
+        ease: "power2.in",
+      }),
+        "<");
+
       tl.to(
         showThirdClipPath,
         {
@@ -99,27 +100,31 @@ const Hero = ( { className }) => {
             y: 0,
             height: 100,
           },
-          duration: .3,
-          ease: 'power2.in',
+          duration: 0.3,
+          ease: "power2.in",
         },
-        '<' // '<' significa comece junto com a animação anterior
+        "<", // '<' significa comece junto com a animação anterior
       );
 
       // Desenho do X
       tl.to([drawThirdPaths, drawFourthPaths], {
-        drawSVG: '0% 100%',
+        drawSVG: "0% 100%",
         duration: 0.5,
-        ease: 'power2.out',
+        ease: "power2.out",
       });
 
       // 1. Animação do título
-      tl.to(titleSplit.chars, {
-        y: 0,
-        opacity: 1,
-        duration: 0.8,
-        stagger: 0.05,
-        ease: 'power3.out',
-      })
+      tl.to(
+        titleSplit.chars,
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.8,
+          stagger: 0.05,
+          ease: "power3.out",
+        },
+        "-=0.4",
+      )
 
         // 2. Animação do subtítulo (começa logo após o título terminar)
         .to(
@@ -129,30 +134,32 @@ const Hero = ( { className }) => {
             opacity: 1,
             duration: 0.8,
             stagger: 0.04,
-            ease: 'power3.out',
+            ease: "power3.out",
           },
-          '-=0.4'
+          "-=0.4",
         ); // Overlap leve de 0.4s para fluir melhor (ajuste a gosto)
       // após terminar animação de subTitleSplit.chars
 
       // 3) faz o h2 “sair”
       tl.to(subTitleRef.current, {
-        delay: 1,
         opacity: 0,
-        y: -20, // sobe um pouco (ou +20 para descer)
         duration: 0.3,
-        ease: 'power2.in',
-      })
-      .set(subTitleRef.current, {
-        opacity: 0,
-        pointerEvents: 'none',
+        ease: "power2.in",
       });
 
-      tl.to(glitchWrapperRef.current, {
-        opacity: 1,
-        duration: 0.3,
-        ease: 'power2.out',
-      });
+      tl.to(
+        glitchWrapperRef.current,
+        {
+          opacity: 1,
+          duration: 0.01,
+        },
+        "-=0.4",
+      )
+
+        .set(subTitleRef.current, {
+          opacity: 0,
+          pointerEvents: "none",
+        });
 
       // 3. Flicker
       // Sua sequência de flicker (pode simplificar com .to() repetido ou stagger se múltiplos)
@@ -168,7 +175,7 @@ const Hero = ( { className }) => {
       };
     },
 
-    { scope: containerRef }
+    { scope: containerRef },
   );
 
   useGSAP(
@@ -204,7 +211,7 @@ const Hero = ( { className }) => {
             morphSVG: "#alt-shape",
             ease: "power2.inOut",
           },
-          "+=3"
+          "+=3",
         )
 
         // outro micro jitter
@@ -219,7 +226,7 @@ const Hero = ( { className }) => {
             morphSVG: "#alt-shape-2",
             ease: "power2.inOut",
           },
-          "+=3" // ⏸ espera 3s antes do próximo
+          "+=3", // ⏸ espera 3s antes do próximo
         )
 
         .to(arrayArrowPaths, { y: -3, duration: 0.04 })
@@ -228,13 +235,15 @@ const Hero = ( { className }) => {
 
       return () => tl.kill();
     },
-    { scope: fourthSvgRef }
+    { scope: fourthSvgRef },
   );
 
   return (
     <section
+      id="home"
       ref={containerRef}
-      className={`min-h-[80dvh] w-full flex flex-col justify-between p-6 sm:p-11 ${ className}`}>
+      className={`min-h-[80dvh] w-full flex flex-col justify-between p-6 sm:p-11 ${className}`}
+    >
       <div className="flex justify-between w-full">
         <svg
           ref={firstSvgRef}
@@ -316,7 +325,7 @@ const Hero = ( { className }) => {
             ref={subTitleRef}
             className="text-3xl sm:text-6xl leading-tight tracking-wider  whitespace-normal break-normal"
           >
-            Front-end <span className="whietspace-nowrap">Developer</span> 
+            Front-end <span className="whietspace-nowrap">Developer</span>
           </h2>
           <div ref={glitchWrapperRef} className="absolute inset-0 opacity-0">
             <GlitchTitle />

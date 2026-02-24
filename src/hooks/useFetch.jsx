@@ -26,6 +26,7 @@ export const useFetch = (db, collectionName) => {
         // const result = await response.json();
         setData(projectsData);
       } catch (err) {
+        console.error("Firestore error: ",err);
         if (err.name !== "AbortError") {
           setError(err.message || "Erro ao buscar dados");
         }

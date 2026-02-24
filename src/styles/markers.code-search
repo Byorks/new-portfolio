@@ -1,0 +1,29 @@
+# Query: markers
+# ContextLines: 1
+
+5 results - 5 files
+
+src\features\home\components\about\AboutSection.jsx:
+  109            toggleActions: "restart pause resume pause",
+  110:           markers: false,
+  111          },
+
+src\features\home\components\contact\ContactSection.jsx:
+  62            toggleActions: "restart pause resume pause",
+  63:           markers: false,
+  64          },
+
+src\features\home\components\hero\Hero.jsx:
+  51            start: "top 80%",
+  52:           markers: false,
+  53          },
+
+src\features\home\components\projects\ProjectsSection.jsx:
+  25          toggleActions: "restart pause resume pause",
+  26:         markers: false,
+  27        },
+
+src\features\home\components\technologies\TechnologiesSection.jsx:
+  22          // toggleActions: "restart pause resume pause",
+  23:         markers: false,
+  24        },

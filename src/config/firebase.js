@@ -1,7 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
-import { getAnalytics } from "firebase/analytics";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -16,6 +15,9 @@ const firebaseConfig = {
   appId: import.meta.env.VITE_FIREBASE_APP_ID,
   measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID
 };
+
+console.log("🔍 import.meta.env completo:", import.meta.env); // veja TODAS as vars
+console.log("Project ID lido:", import.meta.env.VITE_FIREBASE_PROJECT_ID); // deve mostrar o valor exato
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);

@@ -27,9 +27,11 @@
     --color-background: var(--color-midnightviolet-950-main);
     --color-surface: var(--color-spaceindigo-950-main);
     --color-text: var(--color-white);
-    --color-text-secondary:oklch(0.5575 0.0165 244.89); /*6c757d */
+    --color-text-secondary: oklch(0.5575 0.0165 244.89);
+    /*6c757d */
     --color-border: var(--color-midnightviolet-300);
-    --color-dark: oklch(0.1264 0.0266 271.16); /* #040611 */
+    --color-dark: oklch(0.1264 0.0266 271.16);
+    /* #040611 */
     --color-contrast: var(--color-cor-2);
 
     --shadow-small: 0 1px 3px rgba(0, 0, 0, 0.12);
@@ -39,7 +41,9 @@
     --accent: hsl(183 38% 57%);
     --shadow: hsl(10 100% 60%);
 
-    --color-cyber: #00fff2;
+    /* --color-cyber: #00fff2; */
+    /* --color-cyber: #DC89FE; */
+    --color-cyber: hsl(268, 92%, 75%);
     --color-cyber-red: #ff003c;
 }
 
@@ -91,38 +95,62 @@
 
     /* --- Paleta de cores --- */
     /* MediumPurple */
-    --color-mediumpurple-50:   oklch(0.976 0.014 304.1);  /* #F9F5FF */
-    --color-mediumpurple-100:  oklch(0.958 0.021 288.9);  /* #F0EFFF */
-    --color-mediumpurple-200:  oklch(0.896 0.06  301.1);  /* #E3D4FF */
-    --color-mediumpurple-300:  oklch(0.814 0.11  300.1);  /* #CDB2FF */
-    --color-mediumpurple-400:  oklch(0.689 0.183 294.4);  /* #A47FFF */
-    --color-mediumpurple-500:  oklch(0.599 0.238 295.2);  /* #9051FB */
-    --color-mediumpurple-600:  oklch(0.528 0.259 292.3);  /* #782EEF */
-    --color-mediumpurple-700:  oklch(0.468 0.241 291.5);  /* #651ED2 */
-    --color-mediumpurple-800:  oklch(0.414 0.201 293.7);  /* #571EAB */
-    --color-mediumpurple-900:  oklch(0.36  0.17  295.1);  /* #48198A */
-    --color-mediumpurple-950:  oklch(0.272 0.145 291.6);  /* #2D0566 */
-    
+    --color-mediumpurple-50: oklch(0.976 0.014 304.1);
+    /* #F9F5FF */
+    --color-mediumpurple-100: oklch(0.958 0.021 288.9);
+    /* #F0EFFF */
+    --color-mediumpurple-200: oklch(0.896 0.06 301.1);
+    /* #E3D4FF */
+    --color-mediumpurple-300: oklch(0.814 0.11 300.1);
+    /* #CDB2FF */
+    --color-mediumpurple-400: oklch(0.689 0.183 294.4);
+    /* #A47FFF */
+    --color-mediumpurple-500: oklch(0.599 0.238 295.2);
+    /* #9051FB */
+    --color-mediumpurple-600: oklch(0.528 0.259 292.3);
+    /* #782EEF */
+    --color-mediumpurple-700: oklch(0.468 0.241 291.5);
+    /* #651ED2 */
+    --color-mediumpurple-800: oklch(0.414 0.201 293.7);
+    /* #571EAB */
+    --color-mediumpurple-900: oklch(0.36 0.17 295.1);
+    /* #48198A */
+    --color-mediumpurple-950: oklch(0.272 0.145 291.6);
+    /* #2D0566 */
+
     /* MidnightViolet */
-    --color-midnightviolet-950-main: oklch(0.224 0.04 289.3);   /* #1B182D */
-    --color-midnightviolet-900:     oklch(0.328 0.039 286.1);   /* #333248 */
-    --color-midnightviolet-800:     oklch(0.355 0.048 286.9);   /* #3A3854 */
-    --color-midnightviolet-500:     oklch(0.52 0.077 283.4);    /* #636394 */
-    --color-midnightviolet-300:     oklch(0.7603 0.0412 285.38);    /* #636394 */
+    --color-midnightviolet-950-main: oklch(0.224 0.04 289.3);
+    /* #1B182D */
+    --color-midnightviolet-900: oklch(0.328 0.039 286.1);
+    /* #333248 */
+    --color-midnightviolet-800: oklch(0.355 0.048 286.9);
+    /* #3A3854 */
+    --color-midnightviolet-500: oklch(0.52 0.077 283.4);
+    /* #636394 */
+    --color-midnightviolet-300: oklch(0.7603 0.0412 285.38);
+    /* #636394 */
 
     /* SpaceIndigo */
-    --color-spaceindigo-950-main:   oklch(0.305 0.038 279.7);   /* #2B2D42 */
-    --color-spaceindigo-900:        oklch(0.399 0.061 278.4);   /* #404468 */
-    --color-spaceindigo-700:        oklch(0.51 0.097 276.7);    /* #AEAECB */
+    --color-spaceindigo-950-main: oklch(0.305 0.038 279.7);
+    /* #2B2D42 */
+    --color-spaceindigo-900: oklch(0.399 0.061 278.4);
+    /* #404468 */
+    --color-spaceindigo-700: oklch(0.51 0.097 276.7);
+    /* #AEAECB */
 
     /* Outras cores principais */
-    --color-lavender-400-main:      oklch(0.634 0.136 256.8);   /* #518BDB */
-    --color-blueenergy-500-main:    oklch(0.667 0.203 297.1);   /* #A471FF */
+    --color-lavender-400-main: oklch(0.634 0.136 256.8);
+    /* #518BDB */
+    --color-blueenergy-500-main: oklch(0.667 0.203 297.1);
+    /* #A471FF */
 
     /* Neutras / Fundos */
-    --color-cor-2:                  oklch(0.982 0.013 71.3);    /* #FFF8F0 */
-    --color-cor-1:                  oklch(0.224 0.04 289.3);    /* #1B182D (igual ao midviolet 950-main) */
-    --color-color-3:                oklch(0.874 0.021 286.0);   /* #D4D4E3 */
+    --color-cor-2: oklch(0.982 0.013 71.3);
+    /* #FFF8F0 */
+    --color-cor-1: oklch(0.224 0.04 289.3);
+    /* #1B182D (igual ao midviolet 950-main) */
+    --color-color-3: oklch(0.874 0.021 286.0);
+    /* #D4D4E3 */
 
     /* Animações */
     --animate-glitch: glitch 2s infinite;
@@ -236,6 +264,30 @@
 
 /* Use essa camada para classes mais complexas onde vc ainda almeje sobrescrever com classes utilitárias com card btn badge */
 @layer components {
+    .fixed-nav {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        margin: 0 !important;
+        border-radius: 0 !important;
+        border-left: none !important;
+        border-right: none !important;
+        border-top: none !important;
+        width: 100% !important;
+        animation: slideDown 0.5s ease;
+    }
+
+    @keyframes slideDown {
+        from {
+            transform: translateY(-100%);
+        }
+
+        to {
+            transform: translateY(0);
+        }
+    }
+
     .title-h2 {
         @apply text-xl sm:text-3xl;
     }
@@ -465,16 +517,19 @@
 
     .clip-icon {
         clip-path: polygon(0 0, 100% 0, 100% 82%, 82% 100%, 0 100%);
-    }  
-    
+    }
+
     .scrollbar-thin::-webkit-scrollbar {
         height: 4px;
         width: 4px;
     }
+
     .scrollbar-thumb-cyber::-webkit-scrollbar-thumb {
-        background: var(--color-cyber); /* Cor da sua variável cyber */
+        background: var(--color-cyber);
+        /* Cor da sua variável cyber */
         border-radius: 0px;
     }
+
     .scrollbar-track-transparent::-webkit-scrollbar-track {
         background: rgba(0, 255, 242, 0.05);
     }
@@ -483,15 +538,16 @@
 
 @layer utilities {
     .autofill-fix {
+
         /* & é como se fosse a classe pai .autofill-fix nesse caso, aplica as regras quando a classe estiver no estado :-webkit-autofill */
         &:-webkit-autofill,
         &:-webkit-autofill:hover,
         &:-webkit-autofill:focus,
         &:-webkit-autofill:active {
-        -webkit-text-fill-color: white !important;
-        -webkit-box-shadow: inset 0 0 0 500px var(--color-midnightviolet-950-main) !important;
-        box-shadow: inset 0 0 0 1000px var(--color-midnightviolet-950-main) !important;
-        transition: background-color 5000s ease-in-out 0s;
+            -webkit-text-fill-color: white !important;
+            -webkit-box-shadow: inset 0 0 0 500px var(--color-midnightviolet-950-main) !important;
+            box-shadow: inset 0 0 0 1000px var(--color-midnightviolet-950-main) !important;
+            transition: background-color 5000s ease-in-out 0s;
         }
     }
 }

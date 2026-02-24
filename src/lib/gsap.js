@@ -25,6 +25,6 @@ gsap.registerPlugin(
   ScrambleTextPlugin
 );
 
-export { gsap, ScrollTrigger, useGSAP, SplitText, TextPlugin};
+export { gsap, ScrollTrigger, useGSAP, SplitText, TextPlugin, ScrollToPlugin};
 
 // Cuidado para não carregar plugins que nunca serão utilizados

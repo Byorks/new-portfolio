@@ -45,11 +45,11 @@ const CyberPortrait = ( {image ="", imageAlt = "", nextImage, onTransitionComple
   }, [image])
 
   return (
-    <div ref={containerRef} className="relative aspect-square border border-red-500">
-      <span className=" absolute w-12 h-2 bg-red-500"></span>
-      <span className=" absolute h-12 w-2 bg-red-500"></span>
+    <div ref={containerRef} className="relative aspect-square border border-primary">
+      <span className=" absolute w-12 h-2 bg-contrast"></span>
+      <span className=" absolute h-12 w-2 bg-contrast"></span>
 
-      <div className="absolute -top-12 left-9/10">
+      <div className="absolute -top-12 left-8/10 md:left-9/10 scale-75 md:scale-none">
         <svg
           width="90"
           height="90"
@@ -175,7 +175,7 @@ const CyberPortrait = ( {image ="", imageAlt = "", nextImage, onTransitionComple
         />
       </div>
 
-      <div className="absolute -left-12 -bottom-5">
+      <div className="absolute -left-12 -bottom-5 scale-75 md:scale-none">
         <svg
           width="120"
           height="36"
@@ -202,8 +202,8 @@ const CyberPortrait = ( {image ="", imageAlt = "", nextImage, onTransitionComple
         </svg>
       </div>
 
-      <span className="absolute right-0 bottom-0 w-12 h-2 bg-red-500"></span>
-      <span className="absolute right-0 bottom-0 h-12 w-2 bg-red-500"></span>
+      <span className="absolute right-0 bottom-0 w-12 h-2 bg-contrast"></span>
+      <span className="absolute right-0 bottom-0 h-12 w-2 bg-contrast"></span>
     </div>
   );
 };

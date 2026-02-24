@@ -60,7 +60,7 @@ const ContactSection = () => {
           start: "top 80%",
           end: "bottom 20%",
           toggleActions: "restart pause resume pause",
-          markers: true,
+          markers: false,
         },
       });
 
@@ -89,6 +89,7 @@ const ContactSection = () => {
 
   return (
     <section
+      id="contact"
       ref={containerRef}
       className="min-h-[50dvh] w-full py-4"
     >
@@ -172,7 +173,10 @@ const ContactSection = () => {
                 <a target="_blank" href={"https://github.com/Byorks"}>
                   <CyberSquareButton>{githubIcon}</CyberSquareButton>
                 </a>
-                <a target="_blank" href={"https://www.linkedin.com/in/vanessa-byork/"}>
+                <a
+                  target="_blank"
+                  href={"https://www.linkedin.com/in/vanessa-byork/"}
+                >
                   <CyberSquareButton>{SOCIAL_LOGOS[1]}</CyberSquareButton>
                 </a>
               </div>

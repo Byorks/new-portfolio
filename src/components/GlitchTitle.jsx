@@ -3,7 +3,7 @@ import { useRef } from "react";
 
 const roles = [
   "Front-end Developer",
-  // "Back-end Developer",
+  "Back-end Developer",
   "Web Developer",
   "UI/UX Designer",
 ];
@@ -56,12 +56,12 @@ const GlitchTitle = ({ ref = null }) => {
         .to(
           topRef.current,
           { x: -30, duration: 0.002, ease: "power4.inOut" },
-          "split"
+          "split",
         )
         .to(
           bottomRef.current,
           { x: 30, duration: 0.002, ease: "power4.inOut" },
-          "split"
+          "split",
         )
 
         // 3) adiciona redShadow
@@ -71,7 +71,7 @@ const GlitchTitle = ({ ref = null }) => {
             bottomRef.current?.classList.add("redShadow");
           },
           null,
-          "split"
+          "split",
         )
 
         // 4) troca texto no meio
@@ -82,7 +82,7 @@ const GlitchTitle = ({ ref = null }) => {
             bottomRef.current.textContent = next;
           },
           null,
-          "split+=0.05"
+          "split+=0.05",
         )
 
         // 5) pequeno scale
@@ -98,7 +98,7 @@ const GlitchTitle = ({ ref = null }) => {
             bottomRef.current?.classList.add("greenShadow");
           },
           null,
-          "split+=0.12"
+          "split+=0.12",
         )
 
         // 7) remove greenShadow
@@ -108,7 +108,7 @@ const GlitchTitle = ({ ref = null }) => {
             bottomRef.current?.classList.remove("greenShadow");
           },
           null,
-          "split+=0.2"
+          "split+=0.2",
         )
 
         // 7) volta posições
@@ -137,7 +137,7 @@ const GlitchTitle = ({ ref = null }) => {
 
       return () => tl.kill();
     },
-    { scope: containerRef }
+    { scope: containerRef },
   );
   return (
     <div
