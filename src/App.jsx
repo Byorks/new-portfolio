@@ -1,7 +1,9 @@
 import { createBrowserRouter, Outlet, Navigate } from "react-router";
 import { RouterProvider } from "react-router/dom";
 import HomePage from "./features/home/HomePage";
-import LoginPage from "./features/auth/LoginPage";
+import { lazy } from "react";
+
+const LoginPage   = lazy(() => import("./features/auth/LoginPage"));
 
 function ProtectedRoute() {
   // const isAuthenticated = true

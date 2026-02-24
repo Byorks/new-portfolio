@@ -24,3 +24,5 @@ dist-ssr
 *.sw?
 var.env
 *.env
+
+bundle-stats.html

@@ -2,11 +2,12 @@ import { useState, useRef } from "react";
 import {
   useGSAP,
   gsap,
-  ScrollToPlugin,
   ScrollTrigger,
 } from "../../../../lib/gsap";
 
-gsap.registerPlugin(ScrollToPlugin, ScrollTrigger);
+import ScrollToPlugin from "gsap/ScrollToPlugin.js";
+
+gsap.registerPlugin(ScrollToPlugin);
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
