@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import { useGSAP, gsap } from "../../../../lib/gsap";
 import scrambleTech from "../../../../animations/scrambleTech";
-import ProjectCard from "../../../../components/ProjectCard";
+import ProjectCard from "./ProjectCard";
 import { useProjects } from "../../../../hooks/services/useProjects";
 
 const ProjectsSection = () => {
@@ -75,7 +75,7 @@ const ProjectsSection = () => {
 
         <div
           ref={projectCards}
-          className="grid md:grid-cols-12 gap-6 py-12 px-6 sm:px-8"
+          className="grid grid-cols-4 sm:grid-cols-12 gap-6 py-12 px-6 sm:px-8"
         >
           {loading ? (
             <p>Carregando...</p>

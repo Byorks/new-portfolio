@@ -1,20 +1,20 @@
 import { useState } from "react";
-import CyberButton from "./CyberButton";
-import CyberModal from "./CyberModal";
+import CyberButton from "../../../../components/CyberButton";
+import CyberModal from "../../../../components/CyberModal";
 
 const ProjectCard = ({ project }) => {
   const [modalOpen, setModalOpen] = useState(false);
   return (
-    <div className="bg-surface col-span-4 border-[.4px] border-border">
-      <div className="w-full aspect-16/8 bg-neutral-600  ">
+    <div className="bg-surface col-span-4 sm:col-span-6 lg:col-span-4 border-[.4px] border-border">
+      <div className="h-3/12 flex-1  xl:h-[35%] w-full   bg-neutral-600  ">
         <img
           className="w-full h-full object-cover "
           src={project.cover.url}
           alt={project.cover.alt}
         />
       </div>
-      <div className="p-4 flex flex-col gap-6">
-        <h3 className="text-2xl">{project.title}</h3>
+      <div className="h-[70%] flex-1 xl:h-[60%] p-4 flex flex-col justify-between gap-6">
+        <h3 className="text-xl sm:text-2xl">{project.title}</h3>
         <div className="w-full">
           <p>{project.description.card_description}</p>
         </div>
@@ -32,7 +32,7 @@ const ProjectCard = ({ project }) => {
           shortcut="⮞"
           borderColor="var(--color-border)"
           onClick={() => setModalOpen(true)}
-          className="self-end"
+          className="self-end items-end"
         />
         {/* <button className="bg-primary border border-text py-1 w-3/4 self-end font-medium text-neutral-900 not-dark:text-neutral-100">
           Acessar

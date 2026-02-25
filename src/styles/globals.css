@@ -47,6 +47,20 @@
     --color-cyber-red: #ff003c;
 }
 
+/* Automaticamente pega o valor do SO o usuário */
+/* @media (prefers-color-scheme: light) {
+    :root {
+        --color-primary: #0d6efd;
+        --color-secondary: #6c757d;
+        --color-background: #212529;
+        --color-surface: #343a40;
+        --color-text: #f8f9fa;
+        --color-text-secondary: #adb5bd;
+        --color-border: #495057;
+    }
+
+} */
+
 /* Caso vá fazer alternador manual */
 [data-theme="light"] {
     --color-primary: oklch(0.6665 0.2032 297.13);
@@ -259,6 +273,9 @@
         @apply font-body
     }
 
+    p {
+        @apply text-[.9rem] sm:text-base
+    }
 }
 
 
@@ -289,7 +306,7 @@
     }
 
     .title-h2 {
-        @apply text-xl sm:text-3xl;
+        @apply text-2xl sm:text-3xl;
     }
 
     .glitch {
@@ -552,16 +569,3 @@
     }
 }
 
-/* Automaticamente pega o valor do SO o usuário */
-@media (prefers-color-scheme: light) {
-    :root {
-        --color-primary: #0d6efd;
-        --color-secondary: #6c757d;
-        --color-background: #212529;
-        --color-surface: #343a40;
-        --color-text: #f8f9fa;
-        --color-text-secondary: #adb5bd;
-        --color-border: #495057;
-    }
-
-}
