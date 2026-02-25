@@ -1,9 +1,5 @@
 import { useState, useRef } from "react";
-import {
-  useGSAP,
-  gsap,
-  ScrollTrigger,
-} from "../../../../lib/gsap";
+import { useGSAP, gsap, ScrollTrigger } from "../../../../lib/gsap";
 
 import ScrollToPlugin from "gsap/ScrollToPlugin.js";
 
@@ -45,10 +41,26 @@ const Header = () => {
 
       // 3. Animações do Menu
       if (isOpen) {
-        // Animação do ícone
-        gsap.to(".line-top", { rotation: 45, y: 6, duration: 0.3 });
-        gsap.to(".line-mid", { opacity: 0, duration: 0.2 });
-        gsap.to(".line-bot", { rotation: -45, y: -6, duration: 0.3 });
+        gsap.to(".line-top", {
+          rotation: 45,
+          y: 6.5, // ajuste fino aqui (experimente 6 a 10)
+          transformOrigin: "center center", // muito importante!
+          duration: 0.35,
+          ease: "power2.out",
+        });
+
+        gsap.to(".line-mid", {
+          opacity: 0,
+          duration: 0.2,
+        });
+
+        gsap.to(".line-bot", {
+          rotation: -45,
+          y: -6.5, // simétrico ao de cima, mas negativo
+          transformOrigin: "center center",
+          duration: 0.35,
+          ease: "power2.out",
+        });
 
         // Revelar Overlay
         gsap.to(menuRef.current, {
@@ -86,12 +98,12 @@ const Header = () => {
   );
 
   return (
-    <header ref={container} className="relative w-full z-[100]">
+    <header ref={container} className="relative w-full z-100">
       {/* Barra de Navegação Principal */}
       <nav
         ref={navRef}
         className={`
-          relative z-[130] transition-colors duration-300 flex justify-end sm:justify-between items-center
+          relative z-130 transition-colors duration-300 flex justify-end sm:justify-between items-center
           px-6 sm:px-12 py-4 m-4 sm:m-7 rounded-sm border
           ${
             isOpen
@@ -129,11 +141,11 @@ const Header = () => {
         {/* Botão Hambúrguer */}
         <button
           onClick={toggleMenu}
-          className="sm:hidden flex flex-col gap-1 p-2 focus:outline-none relative z-[140]"
+          className="sm:hidden flex flex-col gap-1 p-2 focus:outline-none relative z-140"
         >
-          <div className="line-top w-5 h-[1.5px] bg-contrast"></div>
-          <div className="line-mid w-5 h-[1.5px] bg-contrast"></div>
-          <div className="line-bot w-5 h-[1.5px] bg-contrast"></div>
+          <div className="line-top w-6 h-[2.5px] bg-contrast"></div>
+          <div className="line-mid w-6 h-[2.5px] bg-contrast"></div>
+          <div className="line-bot w-6 h-[2.5px] bg-contrast"></div>
         </button>
       </nav>
 

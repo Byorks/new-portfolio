@@ -59,7 +59,7 @@ const ContactSection = () => {
           trigger: containerRef.current,
           start: "top 80%",
           end: "bottom 20%",
-          toggleActions: "restart pause resume pause",
+          // toggleActions: "restart pause resume pause",
           markers: false,
         },
       });

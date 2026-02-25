@@ -106,7 +106,7 @@ const AboutMeSection = () => {
           trigger: containerRef.current,
           start: "top 80%",
           end: "bottom",
-          toggleActions: "restart pause resume pause",
+          // toggleActions: "restart pause resume pause",
           markers: false,
         },
       });

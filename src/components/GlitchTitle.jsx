@@ -55,12 +55,12 @@ const GlitchTitle = ({ ref = null }) => {
         .add("split")
         .to(
           topRef.current,
-          { x: -30, duration: 0.002, ease: "power4.inOut" },
+          { x: -15, duration: 0.002, ease: "power4.inOut" },
           "split",
         )
         .to(
           bottomRef.current,
-          { x: 30, duration: 0.002, ease: "power4.inOut" },
+          { x: 15, duration: 0.002, ease: "power4.inOut" },
           "split",
         )
 

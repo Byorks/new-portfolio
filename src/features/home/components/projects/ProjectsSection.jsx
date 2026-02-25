@@ -22,7 +22,7 @@ const ProjectsSection = () => {
         trigger: containerRef.current,
         start: "top 60%",
         end: "bottom 20%",
-        toggleActions: "restart pause resume pause",
+        // toggleActions: "restart pause resume pause",
         markers: false,
       },
     });
