@@ -1,4 +1,4 @@
-import { db } from './firebase.js';
+import { db } from '../config/firebase.js';
 import { collection, addDoc } from 'firebase/firestore';
 import projects from '../projects.json' with { type: 'json'};
 

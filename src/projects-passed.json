@@ -1,0 +1,237 @@
+[
+    {
+        "id": "1",
+        "title": "Computer Vision Medicine Web",
+        "description": {
+            "card_description": "Aplicação web voltada para visualização e interação com dados de visão computacional aplicados à medicina.",
+            "resume": "Projeto desenvolvido para explorar a integração entre front-end e aplicações de visão computacional na área médica, com foco na organização da interface, consumo de dados e apresentação visual estruturada.",
+            "objectives": "Aplicar conceitos de desenvolvimento front-end na construção de uma interface clara e funcional para visualização de análises médicas baseadas em visão computacional, organizando componentes de forma escalável.",
+            "challenges": "Estruturar a aplicação para lidar com dados dinâmicos, organizar componentes de forma modular e garantir clareza visual na exibição das informações processadas.",
+            "results": "Evolução na integração entre front-end e aplicações orientadas a dados, fortalecimento da organização arquitetural do projeto e maior segurança na construção de interfaces voltadas para contextos técnicos."
+        },
+        "cover": {
+            "url": "https://firebasestorage.googleapis.com/v0/b/vanessa-byork-portfolio-2026.firebasestorage.app/o/Projects%2Fthumb-cvm-project.webp?alt=media&token=7ab7f2fd-700f-45d9-af4d-4aab50908884",
+            "alt": "Tela inicial da aplicação Computer Vision Medicine Web exibindo interface de análise médica com foco em visão computacional"
+        },
+        "images": [
+            {
+                "url": "hhttps://firebasestorage.googleapis.com/v0/b/vanessa-byork-portfolio-2026.firebasestorage.app/o/Projects%2F2_cvm_1.webp?alt=media&token=8e88c4db-92cb-4971-a214-f70d66d27ba8",
+                "alt": "Interface de visualização de análise médica com dados processados"
+            },
+            {
+                "url": "https://firebasestorage.googleapis.com/v0/b/vanessa-byork-portfolio-2026.firebasestorage.app/o/Projects%2F2_cvm_2.webp?alt=media&token=4f3c1a22-ef9e-4fa2-98d9-480f4dba69af",
+                "alt": "Interface com raio-x colocado para upload"
+            }
+        ],
+        "github": "https://github.com/Byorks/computer-vision-medicine-web",
+        "link": "",
+        "tags": [
+            "React",
+            "TailwindCSS",
+            "ChartJs"
+        ]
+    },
+    {
+        "id": "3",
+        "title": "LineSync Website",
+        "description": {
+            "card_description": "Website institucional desenvolvido com foco em responsividade, animações e experiência do usuário.",
+            "resume": "Desenvolvimento completo de um website institucional utilizando HTML, JavaScript e Tailwind CSS, atuando desde a prototipação até a implementação final, sob mentoria da empresa Labware.",
+            "objectives": "Construir uma interface institucional moderna e responsiva, aplicando boas práticas de estruturação semântica, estilização com Tailwind e organização de código em JavaScript.",
+            "challenges": "Implementar layout totalmente responsivo, aplicar animações de reveal on scroll de forma fluida e garantir navegação intuitiva mantendo consistência visual em diferentes tamanhos de tela.",
+            "results": "Fortalecimento na construção de layouts institucionais do zero, maior domínio em responsividade com Tailwind e experiência prática em deploy utilizando GitHub Pages."
+        },
+        "cover": {
+            "url": "https://firebasestorage.googleapis.com/v0/b/vanessa-byork-portfolio-2026.firebasestorage.app/o/Projects%2Fthumb-line-project.webp?alt=media&token=da51a523-143b-4c4a-bae2-6a85d4d52900",
+            "alt": "Capa com logotipo LineSync"
+        },
+        "images": [
+            {
+                "url": "https://firebasestorage.googleapis.com/v0/b/vanessa-byork-portfolio-2026.firebasestorage.app/o/Projects%2F3_line_1.webp?alt=media&token=baa9bcda-7faf-405b-9592-663329d7fac9",
+                "alt": "Website institucional LineSync exibindo seção principal com layout moderno"
+            },
+            {
+                "url": "https://firebasestorage.googleapis.com/v0/b/vanessa-byork-portfolio-2026.firebasestorage.app/o/Projects%2F3_line_2.webp?alt=media&token=5c1e31dc-631b-41e5-8e0b-dca1aff72912",
+                "alt": "Layout mostrando campanha para jovens talentos"
+            },
+            {
+                "url": "https://firebasestorage.googleapis.com/v0/b/vanessa-byork-portfolio-2026.firebasestorage.app/o/Projects%2F3_line_3.webp?alt=media&token=9b2668e7-045a-4f58-82bd-32453cc8e28a",
+                "alt": "Seção mostrando diferenciais da Linesync"
+            },
+            {
+                "url": "https://firebasestorage.googleapis.com/v0/b/vanessa-byork-portfolio-2026.firebasestorage.app/o/Projects%2F3_line_4.webp?alt=media&token=1d0fa6f1-6f50-45c6-9789-0ad0ec0e022d",
+                "alt": "Seção da home onde mostra empresas que colaboram com a Linesync"
+            },
+            {
+                "url": "https://firebasestorage.googleapis.com/v0/b/vanessa-byork-portfolio-2026.firebasestorage.app/o/Projects%2F3_line_5.webp?alt=media&token=69e34bc2-9bd7-4167-9d86-9f07c3e6b7f4",
+                "alt": "Layout responsivo do website adaptado para diferentes dispositivos"
+            }
+        ],
+        "github": "https://github.com/Byorks/website-linesync",
+        "link": "https://byorks.github.io/website-linesync/",
+        "tags": [
+            "HTML",
+            "JavaScript",
+            "Tailwind CSS"
+        ]
+    },
+    {
+        "id": "3",
+        "title": "LineSync Website",
+        "description": {
+            "card_description": "Website institucional desenvolvido com foco em responsividade, animações e experiência do usuário.",
+            "resume": "Desenvolvimento completo de um website institucional utilizando HTML, JavaScript e Tailwind CSS, atuando desde a prototipação até a implementação final, sob mentoria da empresa Labware.",
+            "objectives": "Construir uma interface institucional moderna e responsiva, aplicando boas práticas de estruturação semântica, estilização com Tailwind e organização de código em JavaScript.",
+            "challenges": "Implementar layout totalmente responsivo, aplicar animações de reveal on scroll de forma fluida e garantir navegação intuitiva mantendo consistência visual em diferentes tamanhos de tela.",
+            "results": "Fortalecimento na construção de layouts institucionais do zero, maior domínio em responsividade com Tailwind e experiência prática em deploy utilizando GitHub Pages."
+        },
+        "cover": {
+            "url": "https://firebasestorage.googleapis.com/v0/b/vanessa-byork-portfolio-2026.firebasestorage.app/o/Projects%2Fthumb-linesync.webp?alt=media",
+            "alt": "Capa do website institucional LineSync exibindo seção principal com layout moderno e responsivo"
+        },
+        "images": [
+            {
+                "url": "https://firebasestorage.googleapis.com/v0/b/vanessa-byork-portfolio-2026.firebasestorage.app/o/Projects%2Flinesync-1.webp?alt=media",
+                "alt": "Seção institucional com animação de conteúdo ao rolar a página"
+            },
+            {
+                "url": "https://firebasestorage.googleapis.com/v0/b/vanessa-byork-portfolio-2026.firebasestorage.app/o/Projects%2Flinesync-2.webp?alt=media",
+                "alt": "Layout responsivo do website adaptado para diferentes dispositivos"
+            }
+        ],
+        "github": "https://github.com/Byorks/website-linesync",
+        "link": "https://byorks.github.io/website-linesync/",
+        "tags": [
+            "HTML",
+            "JavaScript",
+            "Tailwind CSS",
+            "GitHub Pages"
+        ]
+    },
+    {
+        "id": "4",
+        "title": "CyBR Landing Page",
+        "description": {
+            "card_description": "Landing page educacional com foco em acessibilidade e recursos de adaptação visual.",
+            "resume": "Desenvolvimento de landing page voltada para o projeto CyBR, iniciativa educacional na área de cibersegurança em parceria com o SENAI, com foco em acessibilidade e experiência inclusiva.",
+            "objectives": "Construir uma interface acessível e adaptável, implementando recursos que melhorassem a usabilidade para diferentes perfis de usuários, especialmente pessoas com dificuldades de atenção e necessidades visuais específicas.",
+            "challenges": "Implementar modo dark, controle dinâmico de tamanho de fonte e criação do modo foco — reduzindo estímulos visuais e reorganizando o conteúdo com animações suaves sem comprometer a estrutura da página.",
+            "results": "Evolução no desenvolvimento de interfaces inclusivas, maior domínio de manipulação de DOM para personalização dinâmica da experiência e aplicação prática de conceitos de acessibilidade no front-end."
+        },
+        "cover": {
+            "url": "https://firebasestorage.googleapis.com/v0/b/vanessa-byork-portfolio-2026.firebasestorage.app/o/Projects%2Fthumb-cybr-project.webp?alt=media&token=e1923c97-9afd-4729-8254-619711d872cb",
+            "alt": "Capa da CyBR mostrando parceria entre empresas SENAI e Microsoft"
+        },
+        "images": [
+            {
+                "url": "https://firebasestorage.googleapis.com/v0/b/vanessa-byork-portfolio-2026.firebasestorage.app/o/Projects%2F4_cybr_1.webp?alt=media&token=687cb897-aa7d-4540-aaa1-8abaa4b5e51f",
+                "alt": "Interface da landing page mostrando inicio do site"
+            },
+            {
+                "url": "https://firebasestorage.googleapis.com/v0/b/vanessa-byork-portfolio-2026.firebasestorage.app/o/Projects%2F4_cybr_2.webp?alt=media&token=c69a8f11-e6ec-4bf7-8de8-5215bc4b3287",
+                "alt": "Principais serviços da CyBR"
+            },
+            {
+                "url": "https://firebasestorage.googleapis.com/v0/b/vanessa-byork-portfolio-2026.firebasestorage.app/o/Projects%2F4_cybr_3.webp?alt=media&token=a379fbe1-f0ae-4954-9fd0-5f2986a04f63",
+                "alt": "Modo foco ativado com redução de estímulos visuais e reorganização do conteúdo"
+            }
+        ],
+        "github": "https://github.com/Byorks/website-cybr",
+        "link": "https://byorks.github.io/website-cybr/",
+        "tags": [
+            "HTML",
+            "JavaScript",
+            "Acessibilidade",
+            "UX/UI"
+        ]
+    },
+    {
+        "id": "5",
+        "title": "Vox & Mídia Website",
+        "description": {
+            "card_description": "Website institucional com prototipação no Figma, renderização dinâmica de projetos e filtro por categorias.",
+            "resume": "Desenvolvimento de website institucional com prototipação completa no Figma e implementação em React, incluindo renderização dinâmica de projetos a partir de dados estruturados em JSON e navegação entre páginas individuais.",
+            "objectives": "Projetar e desenvolver uma aplicação escalável, estruturando previamente a interface no Figma com definição de cores, tipografia e espaçamentos consistentes, e implementando em React com componentes reutilizáveis e navegação fluida.",
+            "challenges": "Traduzir o design system definido no Figma para o código mantendo consistência visual, estruturar componentes reutilizáveis com padrões claros de espaçamento e tipografia, implementar filtro por categorias com useState, lógica de filtragem em JavaScript e rotas dinâmicas com React Router.",
+            "results": "Fortalecimento no processo completo de desenvolvimento — da prototipação à implementação — com aplicação prática de design system, maior domínio em gerenciamento de estado, roteamento e organização arquitetural voltada para escalabilidade de conteúdo."
+        },
+        "cover": {
+            "url": "https://firebasestorage.googleapis.com/v0/b/vanessa-byork-portfolio-2026.firebasestorage.app/o/Projects%2Fthumb-vox-project.webp?alt=media&token=a6d49565-17b1-449c-b60d-39cfeab70f88",
+            "alt": "Capa mostrando logotipo Vox & Mídia"
+        },
+        "images": [
+            {
+                "url": "https://firebasestorage.googleapis.com/v0/b/vanessa-byork-portfolio-2026.firebasestorage.app/o/Projects%2F5_vox_1.webp?alt=media&token=8e350d22-14fa-4aea-b05b-baf4509f7e37",
+                "alt": "Página inicial do site institucional apresentando banner"
+            },
+            {
+                "url": "https://firebasestorage.googleapis.com/v0/b/vanessa-byork-portfolio-2026.firebasestorage.app/o/Projects%2F5_vox_2.webp?alt=media&token=9835d00c-ba61-42f6-8ada-80417524609a",
+                "alt": "Cases de sucesso da empresa mostrando pessoas fazendo avaliações."
+            },
+            {
+                "url": "https://firebasestorage.googleapis.com/v0/b/vanessa-byork-portfolio-2026.firebasestorage.app/o/Projects%2F5_vox_3.webp?alt=media&token=a44b3da5-b73d-4af5-b829-ce00f53fa612",
+                "alt": "Página de sobre a empresa, mostrando visão da empresa"
+            },
+            {
+                "url": "hhttps://firebasestorage.googleapis.com/v0/b/vanessa-byork-portfolio-2026.firebasestorage.app/o/Projects%2F5_vox_6.webp?alt=media&token=9f4dabac-c2a3-49e2-be2c-aff5e652ec80",
+                "alt": "Responsividade do site apresentada através de um Iphone."
+            },
+            {
+                "url": "https://firebasestorage.googleapis.com/v0/b/vanessa-byork-portfolio-2026.firebasestorage.app/o/Projects%2F5_vox_4.webp?alt=media&token=a9e965d2-6d01-4977-97b1-0284f01d7657",
+                "alt": "Seção de projeto de empresa ARMS, demonstrando parte de páginas dinâmicas"
+            },
+            {
+                "url": "https://firebasestorage.googleapis.com/v0/b/vanessa-byork-portfolio-2026.firebasestorage.app/o/Projects%2F5_vox_5.webp?alt=media&token=d432e380-8b73-4a88-8962-a9ddf000d72e",
+                "alt": "Serviços da empresa sendo apresentados"
+            }
+        ],
+        "github": "https://github.com/Byorks/Website-Vox-Midia",
+        "link": "https://website-vox-midia.vercel.app/",
+        "tags": [
+            "React",
+            "JavaScript",
+            "React Router",
+            "TailwindCSS",
+            "Figma",
+            "Design System"
+        ]
+    },
+    {
+        "id": "6",
+        "title": "Arms Fitness Website",
+        "description": {
+            "card_description": "Landing page responsiva desenvolvida do levantamento de requisitos à publicação em produção.",
+            "resume": "Participação no desenvolvimento da landing page da Arms Moda Fitness, atuando desde a prospecção e reuniões com cliente, levantamento de requisitos e prototipação no Figma até a implementação e publicação.",
+            "objectives": "Criar uma página institucional moderna e responsiva que comunicasse a identidade da marca e promovesse seus produtos, traduzindo necessidades do cliente em soluções visuais e funcionais.",
+            "challenges": "Participar da etapa estratégica com o cliente para definição de requisitos, transformar as decisões de negócio em prototipação estruturada no Figma, garantir fidelidade visual na implementação com HTML, CSS e JavaScript e realizar o deploy em ambiente de produção utilizando Firebase.",
+            "results": "Experiência prática no ciclo completo de desenvolvimento — da prospecção à entrega final — fortalecendo habilidades de comunicação com cliente, organização de interface responsiva e publicação de projeto em ambiente real."
+        },
+        "cover": {
+            "url": "https://firebasestorage.googleapis.com/v0/b/vanessa-byork-portfolio-2026.firebasestorage.app/o/Projects%2Fthumb-arms-project.webp?alt=media&token=209deb38-4c6c-40d7-a2d6-3304e848bb49",
+            "alt": "Capa da landing page Arms Moda Fitness apresentando identidade visual da marca"
+        },
+        "images": [
+            {
+                "url": "https://firebasestorage.googleapis.com/v0/b/vanessa-byork-portfolio-2026.firebasestorage.app/o/Projects%2F6_arms_2.webp?alt=media&token=55e0b75f-a88e-45e4-81a9-ad68c96e53ee",
+                "alt": "Seção principal da landing page Arms Fitness com destaque para produtos"
+            },
+            {
+                "url": "https://firebasestorage.googleapis.com/v0/b/vanessa-byork-portfolio-2026.firebasestorage.app/o/Projects%2F6_arms_3.webp?alt=media&token=76696747-35a6-4565-b7a6-b6abc146fbdf",
+                "alt": "Seção de dúvidas frequentes da landing page Arms Fitness"
+            },
+            {
+                "url": "https://firebasestorage.googleapis.com/v0/b/vanessa-byork-portfolio-2026.firebasestorage.app/o/Projects%2F6_arms_4.webp?alt=media&token=f36f7adc-5430-4433-9923-6bb9f14dca5f",
+                "alt": "Footer com meios de pagamentos e detalhes de funcionamento da loja"
+            }
+        ],
+        "github": "",
+        "link": "https://www.armsfitness.com.br",
+        "tags": [
+            "HTML",
+            "CSS",
+            "JavaScript",
+            "Figma",
+            "Firebase"
+        ]
+    }
+]
