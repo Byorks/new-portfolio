@@ -3,9 +3,10 @@ import { createPortal } from "react-dom";
 import CyberButton from "./CyberButton";
 import { useEffect, useRef } from "react";
 import { LiaExternalLinkAltSolid } from "react-icons/lia";
-import GalleryCarousel from "./GalleryCarousel";
-import useEmblaCarousel from "embla-carousel-react"; // Hook principal
-import Autoplay from "embla-carousel-autoplay"; // Opcional para auto-slide
+import Lightbox from "yet-another-react-lightbox";
+import Zoom from "yet-another-react-lightbox/plugins/zoom";
+import "yet-another-react-lightbox/styles.css";
+import { useState } from "react";
 
 const CyberModal = ({
   isOpen,
@@ -26,6 +27,14 @@ const CyberModal = ({
   const closeBtnRef = useRef(null);
   const closeBtnCrossRef = useRef(null);
   const itemsRef = useRef(null);
+
+  const [openLightbox, setLightboxOpen] = useState(false);
+  const [clickedIndex, setClickedIndex] = useState();
+
+  const onClickImg = (clicked, index) => {
+    setClickedIndex(index);
+    setLightboxOpen(clicked);
+  };
 
   // Icons
   const logoGithub = (
@@ -157,19 +166,6 @@ const CyberModal = ({
     }
   };
 
-  // Evita scroll no body quando modal aberto
-  useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
-
-    return () => {
-      document.body.style.overflow = "";
-    };
-  }, [isOpen]);
-
   if (!isOpen) return null;
 
   return createPortal(
@@ -280,8 +276,12 @@ const CyberModal = ({
                             loading="lazy"
                             className="h-full w-full object-cover opacity-80 transition-all ease-out duration-500 group-hover:scale-110 group-hover:opacity-100 group-hover:rotate-1"
                           />
+
                           {/* Overlay decorativo na imagem */}
-                          <div className="absolute inset-0 bg-gradient-to-t from-cyber/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                          <div
+                            onClick={() => onClickImg(true, index)}
+                            className="absolute inset-0 bg-gradient-to-t from-cyber/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"
+                          />
                         </div>
 
                         {/* Badge de ID da imagem */}
@@ -290,6 +290,25 @@ const CyberModal = ({
                         </span>
                       </div>
                     ))}
+
+                    <Lightbox
+                      open={openLightbox}
+                      index={clickedIndex}
+                      close={() => setLightboxOpen(false)}
+                      slides={images.map((img) => ({
+                        src: img.url,
+                        alt: img.alt,
+                        height: 500
+                      }))}
+                      plugins={[Zoom]}
+                      zoom={{
+                        maxZoomPixelRatio: 3,
+                      }}
+                      controller={{ closeOnBackdropClick: true }}
+                      styles={{
+                        container: { backgroundColor: "rgba(0,0,0,0.70)"},
+                      }}
+                    />
                   </div>
                 </div>
               )}

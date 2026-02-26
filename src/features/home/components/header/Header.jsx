@@ -43,7 +43,7 @@ const Header = () => {
       if (isOpen) {
         gsap.to(".line-top", {
           rotation: 45,
-          y: 6.5, // ajuste fino aqui (experimente 6 a 10)
+          y: 0, // ajuste fino aqui (experimente 6 a 10)
           transformOrigin: "center center", // muito importante!
           duration: 0.35,
           ease: "power2.out",
@@ -56,7 +56,7 @@ const Header = () => {
 
         gsap.to(".line-bot", {
           rotation: -45,
-          y: -6.5, // simétrico ao de cima, mas negativo
+          y: 0, // simétrico ao de cima, mas negativo
           transformOrigin: "center center",
           duration: 0.35,
           ease: "power2.out",
@@ -84,9 +84,9 @@ const Header = () => {
           },
         );
       } else {
-        gsap.to(".line-top", { rotation: 0, y: 0, duration: 0.3 });
+        gsap.to(".line-top", { rotation: 0, y: 8, duration: 0.3 });
         gsap.to(".line-mid", { opacity: 1, duration: 0.3 });
-        gsap.to(".line-bot", { rotation: 0, y: 0, duration: 0.3 });
+        gsap.to(".line-bot", { rotation: 0, y: -8, duration: 0.3 });
         gsap.to(menuRef.current, {
           opacity: 0,
           visibility: "hidden",
@@ -141,11 +141,11 @@ const Header = () => {
         {/* Botão Hambúrguer */}
         <button
           onClick={toggleMenu}
-          className="sm:hidden flex flex-col gap-1 p-2 focus:outline-none relative z-140"
+          className="sm:hidden flex flex-col gap-1 items-center justify-center h-10 w-10 focus:outline-none relative z-140"
         >
-          <div className="line-top w-6 h-[2.5px] bg-contrast"></div>
-          <div className="line-mid w-6 h-[2.5px] bg-contrast"></div>
-          <div className="line-bot w-6 h-[2.5px] bg-contrast"></div>
+          <div className="line-top w-7 h-[2.5px] bg-contrast left-1/2 top-1/2 translate-[-50% -50%] absolute"></div>
+          <div className="line-mid w-7 h-[2.5px] bg-contrast left-1/2 top-1/2 translate-[-50% -50%] absolute"></div>
+          <div className="line-bot w-7 h-[2.5px] bg-contrast left-1/2 top-1/2 translate-[-50% -50%] absolute"></div>
         </button>
       </nav>
 

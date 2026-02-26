@@ -1,9 +1,12 @@
 import { useState } from "react";
 import CyberButton from "../../../../components/CyberButton";
 import CyberModal from "../../../../components/CyberModal";
+import { MdPlayArrow } from "react-icons/md";
 
 const ProjectCard = ({ project }) => {
   const [modalOpen, setModalOpen] = useState(false);
+  const arrowIcon = (<MdPlayArrow className="text-sm" />);
+  
   return (
     <div className="bg-surface col-span-4 sm:col-span-6 lg:col-span-4 border-[.4px] border-border">
       <div className="h-3/12 flex-1  xl:h-[35%] w-full   bg-neutral-600  ">
@@ -29,7 +32,7 @@ const ProjectCard = ({ project }) => {
 
         <CyberButton
           label="Acessar"
-          shortcut="⮞"
+          icon={arrowIcon}
           borderColor="var(--color-border)"
           onClick={() => setModalOpen(true)}
           className="self-end items-end"

@@ -57,9 +57,9 @@ const CyberButton = ({
       </span>
 
       {/* 2. Conteúdo Normal */}
-      <kbd className="z-10 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-background/80 text-[8px] font-bold text-text transition-colors group-hover:text-cyber group-hover:bg-black">
+      <div className="z-10 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-background/80 text-[8px] font-bold text-text transition-colors group-hover:text-cyber group-hover:bg-black">
         {icon ? icon: shortcut}
-      </kbd>
+      </div>
       {/* Hover de texto para branco */}
       <span className="z-10 font-bold tracking-tighter text-background group-hover:text-white">
         {label}
