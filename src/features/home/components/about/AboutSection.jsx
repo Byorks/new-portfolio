@@ -155,12 +155,12 @@ const AboutMeSection = () => {
 
         <div className="grid grid-cols-4 md:grid-cols-12 place-items-center  w-full px-6 sm:px-8 py-12 gap-8 md:gap-4">
           <div className="col-span-4 md:col-span-6 space-y-12 md:space-y-6">
-            <div ref={textRef} className="space-y-6">
+            <div ref={textRef} className="space-y-4 md:space-y-6">
               <p>
                 Sou desenvolvedora com foco em front-end e base em C#,
                 apaixonada por transformar ideias em interfaces funcionais,
                 organizadas e com boa experiência de uso. Atuei em projetos
-                reais no SENAI EAD, utilizando React, JavaScript, HTML, CSS,
+                reais no SENAI de Ensino a Distância, utilizando React, JavaScript, HTML, CSS,
                 Tailwind e integração com dados dinâmicos.
               </p>
 
@@ -172,11 +172,14 @@ const AboutMeSection = () => {
 
               <p>
                 Estou em constante evolução técnica e pessoal. Fora do código,
-                sou apaixonada por artes, leitura e jogos digitais. Pratico
-                vôlei e jiu-jitsu, que fortalecem minha disciplina e constância.
+                sou apaixonada por artes, leitura, jogos digitais. Pratico
+                vôlei e gosto de me exercitar, conjunto que fortalece minha disciplina e constância.
               </p>
 
-              <p>( •̀ ω •́ )✧</p>
+              <p>
+                Como pode ver, gosto bem variado, mas me empenho em todos.
+              </p>
+              <p className="text-xl">( •̀ ω •́ )✧</p>
             </div>
 
             <div className="flex flex-col gap-4">

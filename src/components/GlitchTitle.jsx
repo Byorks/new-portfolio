@@ -1,5 +1,6 @@
-import { gsap, useGSAP } from "../lib/gsap";
 import { useRef } from "react";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
 
 const roles = [
   "Front-end Developer",
@@ -8,17 +9,27 @@ const roles = [
   "UI/UX Designer",
 ];
 
-const GlitchTitle = ({ ref = null }) => {
+const GlitchTitle = () => {
+
   const containerRef = useRef(null);
   const topRef = useRef(null);
   const bottomRef = useRef(null);
 
   useGSAP(
     () => {
+      // match media
+      // É possível colocarmos o scopo como parâmetro para evitarmos vários refs também serve
+      const mm = gsap.matchMedia();
+
       const tl = gsap.timeline({
         repeat: -1,
         repeatDelay: 2,
-        delay: 6,
+        delay: 4.5,
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: "top 80%",
+          toggleActions: "play pause resume pause",
+        }
       });
 
       let index = 0;
@@ -35,34 +46,64 @@ const GlitchTitle = ({ ref = null }) => {
         top: 0,
       });
 
-      // 1) pequeno skew / glitch inicial
+      // Forma longa de se escrever
+      // Mobile
+      // mm.add("(max-width: 767.98px)", () => {
+      //   // 1) pequeno skew / glitch inicial
+      //   tl.to([topRef.current, bottomRef.current], {
+      //     skewX: 20,
+      //     duration: 0.1,
+      //     ease: "power4.inOut",
+      //   });
+      // });
+
+      // // Desktop
+      // mm.add("(min-width: 768px)", () => {
+      //   // glitch inicial
+      //   tl.to([topRef.current, bottomRef.current], {
+      //     skewX: 70,
+      //     duration: 0.1,
+      //     ease: "power4.inOut",
+      //   });
+      // });
+
+      // Forma de escrever em condicionais
+      mm.add(
+        {
+          // é possível usar operadores lógicos
+          isMobile: "(max-width: 767.98px)",
+          // isDesktop: "(min-width: 768px) and (prefers-reduced-motion: no-preference)",
+          // mas reduced motion não quer dizer 0 motion
+          reducedMotion: "(prefers-reduced-motion: reduce)",
+        },
+        (context) => {
+          let { isMobile, reducedMotion } = context.conditions;
+
+          // Com condicionais
+          tl.to([topRef.current, bottomRef.current], {
+            skewX: reducedMotion ? 5 : isMobile ? 20 : 70,
+            duration: 0.1,
+          });
+        },
+      );
+
       tl.to([topRef.current, bottomRef.current], {
-        skewX: 70,
-        duration: 0.1,
+        skewX: 0,
+        duration: 0.04,
         ease: "power4.inOut",
       })
-        .to([topRef.current, bottomRef.current], {
-          skewX: 0,
-          duration: 0.04,
-          ease: "power4.inOut",
-        })
         .to([topRef.current, bottomRef.current], { opacity: 0, duration: 0.04 })
         .to([topRef.current, bottomRef.current], { opacity: 1, duration: 0.04 })
         .to([topRef.current, bottomRef.current], { x: -20, duration: 0.04 })
         .to([topRef.current, bottomRef.current], { x: 0, duration: 0.04 })
 
         // 2) split horizontal
-        .add("split")
         .to(
           topRef.current,
           { x: -15, duration: 0.002, ease: "power4.inOut" },
           "split",
         )
-        .to(
-          bottomRef.current,
-          { x: 15, duration: 0.002, ease: "power4.inOut" },
-          "split",
-        )
+        .to(bottomRef.current, { x: 15, duration: 0.002, ease: "power4.inOut" })
 
         // 3) adiciona redShadow
         .call(
@@ -121,21 +162,12 @@ const GlitchTitle = ({ ref = null }) => {
           x: 0,
           duration: 0.2,
           ease: "power4.inOut",
-        })
-
-        // 8) scaleY glitch final
-        .to([topRef.current, bottomRef.current], {
-          scaleY: 1.1,
-          duration: 0.02,
-          ease: "power4.inOut",
-        })
-        .to([topRef.current, bottomRef.current], {
-          scaleY: 1,
-          duration: 0.04,
-          ease: "power4.inOut",
         });
 
-      return () => tl.kill();
+      return () => {
+        tl.revert();
+        mm.revert();
+      };
     },
     { scope: containerRef },
   );
@@ -143,9 +175,7 @@ const GlitchTitle = ({ ref = null }) => {
     <div
       id="txt"
       ref={containerRef}
-      className="
-        mx-auto
-        w-full h-auto relative"
+      className=" mx-auto w-full h-auto relative"
     >
       <h2
         ref={topRef}
