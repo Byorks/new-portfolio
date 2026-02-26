@@ -58,21 +58,21 @@ const ProjectCard = ({ project }) => {
 
           <section>
             <div className="w-full py-2">
-              <p>{project.description.resume}</p>
+              <p className="text-contrast/85">{project.description.resume}</p>
             </div>
 
             {project.description.objectives && (
               <div className="py-2">
                 <h4 className="text-2xl">Objetivos</h4>
                 <div className="w-full">
-                  <p> {project.description.objectives}</p></div>
+                  <p className="text-contrast/85"> {project.description.objectives}</p></div>
               </div>
             )}
 
             {project.description.challenges && (
               <div className="py-2">
                 <h4 className="text-2xl">Desafios</h4>
-                <div className="w-full"><p>{project.description.challenges}
+                <div className="w-full"><p className="text-contrast/85">{project.description.challenges}
                   </p></div>
               </div>
             )}
