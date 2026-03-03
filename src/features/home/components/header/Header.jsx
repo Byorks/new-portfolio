@@ -104,7 +104,7 @@ const Header = () => {
         ref={navRef}
         className={`
           relative z-130 transition-colors duration-300 flex justify-end sm:justify-between items-center
-          px-6 sm:px-12 py-4 m-4 sm:m-7 rounded-sm border
+          px-6 sm:px-12 py-2 md:py-4 m-4 sm:m-7 rounded-sm border
           ${
             isOpen
               ? "bg-transparent border-transparent backdrop-blur-none" // Esconde o fundo/borda quando aberto
