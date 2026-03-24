@@ -160,8 +160,9 @@ const AboutMeSection = () => {
                 Sou desenvolvedora com foco em front-end e base em C#,
                 apaixonada por transformar ideias em interfaces funcionais,
                 organizadas e com boa experiência de uso. Atuei em projetos
-                reais no SENAI de Ensino a Distância, utilizando React, JavaScript, HTML, CSS,
-                Tailwind e integração com dados dinâmicos.
+                reais no SENAI de Ensino a Distância, utilizando React,
+                JavaScript, HTML, CSS, Tailwind e integração com dados
+                dinâmicos.
               </p>
 
               <p>
@@ -172,13 +173,12 @@ const AboutMeSection = () => {
 
               <p>
                 Estou em constante evolução técnica e pessoal. Fora do código,
-                sou apaixonada por artes, leitura, jogos digitais. Pratico
-                vôlei e gosto de me exercitar, conjunto que fortalece minha disciplina e constância.
+                sou apaixonada por artes, leitura, jogos digitais. Pratico vôlei
+                e gosto de me exercitar, conjunto que fortalece minha disciplina
+                e constância.
               </p>
 
-              <p>
-                Como pode ver, gosto bem variado, mas me empenho em todos.
-              </p>
+              <p>Como pode ver, gosto bem variado, mas me empenho em todos.</p>
               <p className="text-xl">( •̀ ω •́ )✧</p>
             </div>
 

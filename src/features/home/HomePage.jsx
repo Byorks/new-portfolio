@@ -1,5 +1,4 @@
 import ContactSection from "./components/contact/ContactSection";
- 
 import Hero from "./components/hero/Hero";
 import ProjectsSection from "./components/projects/ProjectsSection";
 import TechnologiesSection from "./components/technologies/TechnologiesSection";
