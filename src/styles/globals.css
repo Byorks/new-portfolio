@@ -18,7 +18,9 @@
   Se o padrão for o tema escuro, só mudamos o color-scheme para light e o root com as cores escuras
   Nesse caso não necessitamos de um botão para mudar a cor, no entanto o usuário fica preso a cor do SO, melhor etão ter um botão
 */
-
+* {
+    cursor: none !important;
+}
 :root {
     /* Dark theme (default) */
     --color-primary: var(--color-blueenergy-500-main);
