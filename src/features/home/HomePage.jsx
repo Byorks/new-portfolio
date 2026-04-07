@@ -6,13 +6,15 @@ import AboutMeSection from "./components/about/AboutSection";
 import Header from "./components/header/Header";
 import Footer from "./components/footer/Footer";
 import MeshBackground from "../../components/MeshBackground";
-import { useRef } from "react";
+import CyberCursor from "../../components/CyberCursor";
 
 const HomePage = () => {
   return (
     <div className="relative overflow-hidden bg-[#10083B]">
       <Header />
-      <main className=" m-4 sm:m-7 border border-border rounded-sm bg-background/50 ">
+      <CyberCursor />
+      <MeshBackground />
+      <main className="relative m-4 sm:m-7 border border-border rounded-sm bg-background/20 ">
         {/* <div
           className="absolute inset-0"
           style={{
@@ -25,8 +27,6 @@ const HomePage = () => {
             opacity: 0.45,
           }}
         ></div>*/}
-
-        <MeshBackground />
 
         <div id="hero-section">
           <Hero className="snap-start snap-always" />

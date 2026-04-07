@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Saira:ital,wght@0,100..900;1,100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Saira:ital,wght@0,100..900;1,100..900&display=swap");
 @import "tailwindcss";
 
 /*  ---Entendendo preferes-color-scheme---
@@ -83,7 +83,9 @@
 
 /* Smooth theme transitions */
 * {
-    transition: background-color 0.3s ease, color 0.3s ease;
+    transition:
+        background-color 0.3s ease,
+        color 0.3s ease;
 }
 
 @theme {
@@ -100,12 +102,18 @@
     --color-cyber: var(--color-cyber);
     --color-cyber-red: var(--color-cyber-red);
 
-    --clip-modal: polygon(0 0, 100% 0, 100% calc(100% - 40px), calc(100% - 40px) 100%, 0% 100%);
+    --clip-modal: polygon(
+        0 0,
+        100% 0,
+        100% calc(100% - 40px),
+        calc(100% - 40px) 100%,
+        0% 100%
+    );
     --clip-img: polygon(0 0, 100% 0, 100% 85%, 90% 100%, 0 100%);
 
     /* Tipografia */
     --font-title: "Poppins", "Saira", sans-serif;
-    --font-body: 'DM Sans', "Inter", sans-serif, i-sans-serif, system-ui;
+    --font-body: "DM Sans", "Inter", sans-serif, i-sans-serif, system-ui;
 
     /* --- Paleta de cores --- */
     /* MediumPurple */
@@ -163,7 +171,7 @@
     /* #FFF8F0 */
     --color-cor-1: oklch(0.224 0.04 289.3);
     /* #1B182D (igual ao midviolet 950-main) */
-    --color-color-3: oklch(0.874 0.021 286.0);
+    --color-color-3: oklch(0.874 0.021 286);
     /* #D4D4E3 */
 
     /* Animações */
@@ -250,12 +258,11 @@
     }
 }
 
-
-
 @layer base {
     body {
         background: var(--color-background);
         color: var(--color-text);
+        cursor: none !important;
     }
 
     h1,
@@ -270,14 +277,13 @@
     p,
     button,
     label {
-        @apply font-body
+        @apply font-body;
     }
 
     p {
-        @apply text-[.9rem] sm:text-base
+        @apply text-[.9rem] sm:text-base;
     }
 }
-
 
 /* Use essa camada para classes mais complexas onde vc ainda almeje sobrescrever com classes utilitárias com card btn badge */
 @layer components {
@@ -341,7 +347,7 @@
         pointer-events: none;
     }
 
-    .resizable[data-spill=true] .marq-container::after {
+    .resizable[data-spill="true"] .marq-container::after {
         content: "";
         position: fixed;
         top: 50%;
@@ -366,7 +372,7 @@
         height: 100px;
     }
 
-    .resizable[data-spill=true] {
+    .resizable[data-spill="true"] {
         overflow: visible;
         outline: 4px dashed white;
     }
@@ -375,7 +381,7 @@
         outline: 2px solid hsl(0 0% 100% / 0.5);
     }
 
-    [data-spill=true] .marq-container {
+    [data-spill="true"] .marq-container {
         mask: unset;
         overflow: visible;
     }
@@ -415,11 +421,11 @@
         height: 65%;
     }
 
-    [data-play-state=running] :is(ul, li) {
+    [data-play-state="running"] :is(ul, li) {
         animation-play-state: running !important;
     }
 
-    [data-play-state=paused] :is(ul, li) {
+    [data-play-state="paused"] :is(ul, li) {
         animation-play-state: paused !important;
     }
 
@@ -452,11 +458,14 @@
         position: absolute;
         inset: 0;
         z-index: var(--index);
-        mask: linear-gradient(90deg,
-                transparent calc(var(--index) * calc((100 / var(--blurs)) * 1%)),
-                black calc((var(--index) + 1) * calc((100 / var(--blurs)) * 1%)),
-                black calc((var(--index) + 2) * calc((100 / var(--blurs)) * 1%)),
-                transparent calc((var(--index) + 3) * calc((100 / var(--blurs)) * 1%)));
+        mask: linear-gradient(
+            90deg,
+            transparent calc(var(--index) * calc((100 / var(--blurs)) * 1%)),
+            black calc((var(--index) + 1) * calc((100 / var(--blurs)) * 1%)),
+            black calc((var(--index) + 2) * calc((100 / var(--blurs)) * 1%)),
+            transparent
+                calc((var(--index) + 3) * calc((100 / var(--blurs)) * 1%))
+        );
         backdrop-filter: blur(calc((var(--index, 0) * var(--blur, 0)) * 2px));
     }
 
@@ -464,36 +473,42 @@
         opacity: 0;
     }
 
-    [data-outline=true] .marq-blur {
+    [data-outline="true"] .marq-blur {
         border: 4px dashed hotpink;
         background: hsl(320 100% 50% / 0.1);
     }
 
-    [data-blurring=true] .marq-blur {
+    [data-blurring="true"] .marq-blur {
         opacity: 1;
     }
 
     /* The animation stuff */
-    @media(prefers-reduced-motion: no-preference) {
-        [data-translate=items] ul {
+    @media (prefers-reduced-motion: no-preference) {
+        [data-translate="items"] ul {
             gap: 0;
         }
 
-        [data-translate=items][data-direction=horizontal].container {
+        [data-translate="items"][data-direction="horizontal"].container {
             padding-inline: 0;
         }
 
-        [data-translate=items] li {
+        [data-translate="items"] li {
             --duration: calc(var(--speed) * 1s);
-            --delay: calc((var(--duration) / var(--count)) * (var(--index, 0) * -1));
+            --delay: calc(
+                (var(--duration) / var(--count)) * (var(--index, 0) * -1)
+            );
             animation: slide var(--duration) var(--delay) infinite linear paused;
             translate: var(--origin-x) var(--origin-y);
         }
 
-        [data-translate=items][data-direction=horizontal] li {
-            --origin-x: calc(((var(--count) - var(--index)) + var(--inset, 0)) * 100%);
+        [data-translate="items"][data-direction="horizontal"] li {
+            --origin-x: calc(
+                ((var(--count) - var(--index)) + var(--inset, 0)) * 100%
+            );
             --origin-y: 0;
-            --destination-x: calc(calc((var(--index) + 1 + var(--outset, 0)) * -100%));
+            --destination-x: calc(
+                calc((var(--index) + 1 + var(--outset, 0)) * -100%)
+            );
             --destination-y: 0;
         }
 
@@ -552,17 +567,16 @@
     }
 }
 
-
 @layer utilities {
     .autofill-fix {
-
         /* & é como se fosse a classe pai .autofill-fix nesse caso, aplica as regras quando a classe estiver no estado :-webkit-autofill */
         &:-webkit-autofill,
         &:-webkit-autofill:hover,
         &:-webkit-autofill:focus,
         &:-webkit-autofill:active {
             -webkit-text-fill-color: white !important;
-            -webkit-box-shadow: inset 0 0 0 500px var(--color-midnightviolet-950-main) !important;
+            -webkit-box-shadow: inset 0 0 0 500px
+                var(--color-midnightviolet-950-main) !important;
             box-shadow: inset 0 0 0 1000px var(--color-midnightviolet-950-main) !important;
             transition: background-color 5000s ease-in-out 0s;
         }

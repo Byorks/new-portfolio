@@ -64,13 +64,39 @@ const BLOBS = [
     idle: { x: "15vw", y: "-20vh", scale: 1.3, duration: 4, delay: 1 },
     repelRadius: 350,
   },
+  {
+    id: "blob-4",
+    style: {
+      width: "90%",
+      height: "220px",
+      top: "2%",
+      right: "-40%",
+      background: "radial-gradient(circle, #AA0DF0, transparent 60%)",
+    },
+    blur: 40,
+    idle: { x: "20vw", y: "-60vh", scale: 1.2, duration: 4, delay: 1 },
+    repelRadius: 200,
+  },
+  {
+    id: "blob-5",
+    style: {
+      width: "100%",
+      height: "180px",
+      top: "16%",
+      right: "-50%",
+      background: "radial-gradient(circle, #0D61F7, transparent 60%)",
+    },
+    blur: 40,
+    idle: { x: "20vw", y: "-100%", scale: 1.1, duration: 4, delay: 1 },
+    repelRadius: 350,
+  },
 ];
 
 // ─── Blob do cursor ──────────────────────────────────────────────────────────
 const CURSOR_BLOB = {
   style: {
-    width: "280px",
-    height: "280px",
+    width: "380px",
+    height: "380px",
     background: "radial-gradient(circle, #a855f7, transparent 60%)",
     borderRadius: "50%",
     pointerEvents: "none",
@@ -80,7 +106,7 @@ const CURSOR_BLOB = {
     zIndex: 0,
     transform: "translate(-50%, -50%)",
   },
-  blur: 60,
+  blur: 70,
   repelForce: 42,
   lerpFactor: 0.11,
 };
