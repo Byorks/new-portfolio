@@ -10,9 +10,9 @@ import { useRef } from "react";
 
 const HomePage = () => {
   return (
-    <>
+    <div className="relative overflow-hidden bg-[#10083B]">
       <Header />
-      <main className="relative m-4 sm:m-7 border border-border rounded-sm overflow-hidden bg-[#0C0248]">
+      <main className=" m-4 sm:m-7 border border-border rounded-sm bg-background/50 ">
         {/* <div
           className="absolute inset-0"
           style={{
@@ -45,7 +45,7 @@ const HomePage = () => {
         </div>
         <Footer />
       </main>
-    </>
+    </div>
   );
 };
 
