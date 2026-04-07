@@ -1,8 +1,10 @@
+const actualYear = new Date().getFullYear();
+
 const Footer = () => {
   return (
     <footer className="bg-background/50 border border-border px-6 sm:px-12 py-4 m-4 sm:m-7 rounded-sm">
       <div className="w-full h-full flex justify-between sm:items-center flex-col sm:flex-row gap-4 ">
-        <p>© 2025 Vanessa Byork</p>
+        <p>© {actualYear.toString()} Vanessa Byork</p>
 
         <div className="flex gap-4">
           <svg
