@@ -4,7 +4,7 @@ import scrambleTech from "../../../../animations/scrambleTech";
 import ProjectCard from "./ProjectCard";
 import { useProjects } from "../../../../hooks/services/useProjects";
 
-const ProjectsSection = () => {
+const ProjectsSection = ({ className }) => {
   const { projects, loading, error } = useProjects();
   console.log(projects);
 
@@ -58,7 +58,7 @@ const ProjectsSection = () => {
     <section
       id="projects"
       ref={containerRef}
-      className="min-h-[50dvh] w-full py-4"
+      className={`min-h-[50dvh] w-full py-4 ${className}`}
     >
       <div className="max-w-6xl lg:max-w-7xl w-full h-full mx-auto flex flex-col">
         <div className="w-full relative px-6 sm:px-8 my-6 md:my-11">

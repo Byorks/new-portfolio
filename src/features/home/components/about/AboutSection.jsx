@@ -80,7 +80,7 @@ const IMGS = [
   "https://images.unsplash.com/photo-1521714161819-15534968fc5f",
 ];
 
-const AboutMeSection = () => {
+const AboutMeSection = ({ className }) => {
   const containerRef = useRef();
   const verticalRef = useRef();
   const lineRef = useRef();
@@ -140,7 +140,9 @@ const AboutMeSection = () => {
 
   return (
     <section id="about" ref={containerRef} className="min-h-dvh w-full py-4">
-      <div className="max-w-6xl lg:max-w-7xl w-full h-full mx-auto flex flex-col">
+      <div
+        className={`max-w-6xl lg:max-w-7xl w-full h-full mx-auto flex flex-col ${className}`}
+      >
         <div className="w-full relative px-6 sm:px-8 my-6 md:my-11">
           {/* Linha horizontal */}
           <div ref={lineRef} className="h-px bg-white origin-left scale-x-0" />

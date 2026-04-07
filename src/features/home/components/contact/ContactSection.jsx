@@ -31,7 +31,7 @@ const SOCIAL_LOGOS = [
   </svg>,
 ];
 
-const ContactSection = () => {
+const ContactSection = ({ className }) => {
   const containerRef = useRef();
   const titleRef = useRef();
   const lineRef = useRef();
@@ -91,7 +91,7 @@ const ContactSection = () => {
     <section
       id="contact"
       ref={containerRef}
-      className="min-h-[50dvh] w-full py-4"
+      className={`min-h-[50dvh] w-full py-4 ${className}`}
     >
       <div className="w-full max-w-6xl lg:max-w-7xl mx-auto flex flex-col">
         <div className="w-full relative px-6 sm:px-8 my-6 md:my-11">

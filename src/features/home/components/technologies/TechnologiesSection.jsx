@@ -5,7 +5,7 @@ import InfiniteMarquee from "../../../../components/InfiniteMarquee";
 import flicker from "../../../../animations/flicker";
 import scrambleTech from "../../../../animations/scrambleTech";
 
-const TechnologiesSection = () => {
+const TechnologiesSection = ({ className }) => {
   // criando array de refs
   const svgDivRefs = useRef([]);
   const titleRef = useRef();
@@ -30,9 +30,9 @@ const TechnologiesSection = () => {
     });
 
     flicker(tl, svgDivRefs.current, 2);
- 
-    scrambleTech(tl, titleRef.current, "Tecnologias")
-    
+
+    scrambleTech(tl, titleRef.current, "Tecnologias");
+
     tl.to(logoRef.current, {
       opacity: 1,
       duration: 0.5,
@@ -42,7 +42,7 @@ const TechnologiesSection = () => {
   return (
     <section
       ref={containerRef}
-      className="min-h-[50dvh] w-full flex items-center"
+      className={`min-h-[50dvh] w-full flex items-center ${className}`}
     >
       <div className="max-w-6xl lg:max-w-7xl w-full h-full mx-auto flex flex-col">
         <div className=" p-6 sm:p-11 flex justify-center gap-4 sm:gap-24 ">
