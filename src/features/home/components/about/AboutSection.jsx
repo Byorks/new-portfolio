@@ -75,9 +75,9 @@ const ICONS = [
 ];
 
 const IMGS = [
-  "https://images.unsplash.com/photo-1665041982909-8a86864a1e49",
-  "https://images.unsplash.com/photo-1621478374422-35206faeddfb",
-  "https://images.unsplash.com/photo-1521714161819-15534968fc5f",
+  "https://images.unsplash.com/photo-1665041982909-8a86864a1e49?w=600",
+  "https://images.unsplash.com/photo-1621478374422-35206faeddfb?w=600",
+  "https://images.unsplash.com/photo-1521714161819-15534968fc5f?w=600",
 ];
 
 const AboutMeSection = ({ className }) => {
