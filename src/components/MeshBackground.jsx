@@ -12,19 +12,19 @@ const SECTION_OPACITIES = {
 
 // ─── Configuração de blobs (adicione/remova objetos aqui) ────────────────────
 const BLOBS = [
-  {
-    id: "blob-0",
-    style: {
-      width: "30%",
-      height: "50%",
-      top: "0%",
-      left: "0%",
-      background: "radial-gradient(circle, #7813F2, transparent 35%)",
-    },
-    blur: 80,
-    idle: { x: "20vw", y: "15vh", scale: 1.2, duration: 8, delay: 0 },
-    repelRadius: 260,
-  },
+  // {
+  //   id: "blob-0",
+  //   style: {
+  //     width: "30%",
+  //     height: "50%",
+  //     top: "0%",
+  //     left: "0%",
+  //     background: "radial-gradient(circle, #7813F2, transparent 35%)",
+  //   },
+  //   blur: 80,
+  //   idle: { x: "20vw", y: "15vh", scale: 1.2, duration: 8, delay: 0 },
+  //   repelRadius: 260,
+  // },
   {
     id: "blob-1",
     style: {
@@ -113,12 +113,13 @@ const CURSOR_BLOB = {
 
 const MeshBackground = () => {
   const meshRef = useRef(null);
+  const wrapperRefs = useRef([]);
   const blobRefs = useRef([]);
   const cursorBlobRef = useRef(null);
 
   useGSAP(() => {
-    // ── Animações idle em loop ──────────────────────────────────────────────
-    const idleAnims = blobRefs.current.map((el, i) => {
+    // ── Animações idle em loop (agora no Wrapper) ───────────────────────────
+    const idleAnims = wrapperRefs.current.map((el, i) => {
       if (!el) return null;
       const { x, y, scale, duration, delay } = BLOBS[i].idle;
       return gsap.to(el, {
@@ -155,16 +156,56 @@ const MeshBackground = () => {
         }),
     );
 
-    // ── Cursor tracking + repulsão ─────────────────────────────────────────
-    let cursorX = window.innerWidth / 2;
-    let cursorY = window.innerHeight / 2;
-    let smoothX = cursorX;
-    let smoothY = cursorY;
+    // ── Cursor tracking (Usando quickTo ao invés de lerp manual) ───────────
+    const cursorXTo = gsap.quickTo(cursorBlobRef.current, "x", {
+      duration: 0.8,
+      ease: "power3.out",
+    });
+    const cursorYTo = gsap.quickTo(cursorBlobRef.current, "y", {
+      duration: 0.8,
+      ease: "power3.out",
+    });
 
-    // Offset de repulsão por blob (começa em zero)
+    // Estado do mouse para a repulsão
+    let mouseX = window.innerWidth / 2;
+    let mouseY = window.innerHeight / 2;
+
+    // Seta a posição inicial do cursor
+    cursorXTo(mouseX);
+    cursorYTo(mouseY);
+
+    const onPointerMove = (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+      cursorXTo(mouseX);
+      cursorYTo(mouseY);
+    };
+
+    // ── Cache dos Centros para evitar Layout Thrashing ─────────────────────
+    let cachedCenters = [];
+    const updateCenters = () => {
+      cachedCenters = wrapperRefs.current.map((el) => {
+        if (!el) return { x: 0, y: 0 };
+        // Pega o BoundingRect e subtrai o transform atual para achar a origem real
+        const r = el.getBoundingClientRect();
+        const style = window.getComputedStyle(el);
+        const matrix = new DOMMatrixReadOnly(style.transform);
+
+        return {
+          x: r.left - matrix.e + r.width / 2,
+          y: r.top - matrix.f + r.height / 2,
+        };
+      });
+    };
+
+    // Calcula os centros iniciais e atualiza no resize
+    updateCenters();
+    window.addEventListener("resize", updateCenters);
+
+    // ── Repulsão ───────────────────────────────────────────────────────────
     const offsets = BLOBS.map(() => ({ x: 0, y: 0 }));
 
-    // quickSetters para cada blob e para a cursor blob
+    // quickSetters agora agem no FILHO, sem brigar com o GSAP do PAI
     const blobSetX = blobRefs.current.map((el) =>
       el ? gsap.quickSetter(el, "x", "px") : null,
     );
@@ -172,31 +213,23 @@ const MeshBackground = () => {
       el ? gsap.quickSetter(el, "y", "px") : null,
     );
 
-    const cursorSetX = gsap.quickSetter(cursorBlobRef.current, "x", "px");
-    const cursorSetY = gsap.quickSetter(cursorBlobRef.current, "y", "px");
-
-    const onPointerMove = (e) => {
-      cursorX = e.clientX;
-      cursorY = e.clientY;
-    };
-
     const tick = () => {
-      // Suaviza movimento da cursor blob
-      smoothX += (cursorX - smoothX) * CURSOR_BLOB.lerpFactor;
-      smoothY += (cursorY - smoothY) * CURSOR_BLOB.lerpFactor;
-      cursorSetX(smoothX);
-      cursorSetY(smoothY);
-
-      // Repulsão das blobs ao se aproximar do cursor
       blobRefs.current.forEach((el, i) => {
-        if (!el) return;
+        if (!el || !cachedCenters[i]) return;
 
-        const rect = el.getBoundingClientRect();
-        const blobCX = rect.left + rect.width / 2;
-        const blobCY = rect.top + rect.height / 2;
+        // Pega a posição animada do pai para saber onde o blob realmente está
+        const wrapper = wrapperRefs.current[i];
+        const idleX = gsap.getProperty(wrapper, "x");
+        const idleY = gsap.getProperty(wrapper, "y");
 
-        const dx = blobCX - smoothX;
-        const dy = blobCY - smoothY;
+        // Centro atual do blob = centro original + animação do pai
+        const blobCX = cachedCenters[i].x + Number(idleX);
+        const blobCY = cachedCenters[i].y + Number(idleY);
+
+        // Usamos a posição crua do mouse para a repulsão ser imediata
+        // (ou poderíamos ler gsap.getProperty(cursorBlob, 'x') se quiséssemos ler o cursor atrasado)
+        const dx = blobCX - mouseX;
+        const dy = blobCY - mouseY;
         const dist = Math.sqrt(dx * dx + dy * dy);
         const { repelRadius } = BLOBS[i];
 
@@ -206,16 +239,13 @@ const MeshBackground = () => {
           offsets[i].y += (dy / dist) * force;
         }
 
-        // Retorno elástico suave para posição original
+        // Atrito elástico (volta ao 0,0 do filho)
         offsets[i].x *= 0.88;
         offsets[i].y *= 0.88;
 
-        // Aplica o offset em cima do que o GSAP já animou (idle)
-        const idleX = gsap.getProperty(el, "x");
-        const idleY = gsap.getProperty(el, "y");
-
-        blobSetX[i](Number(idleX) + offsets[i].x);
-        blobSetY[i](Number(idleY) + offsets[i].y);
+        // Aplica direto, sem precisar somar com o Idle!
+        blobSetX[i](offsets[i].x);
+        blobSetY[i](offsets[i].y);
       });
     };
 
@@ -226,6 +256,7 @@ const MeshBackground = () => {
       idleAnims.forEach((a) => a?.kill());
       triggers.forEach((t) => t.kill());
       window.removeEventListener("pointermove", onPointerMove);
+      window.removeEventListener("resize", updateCenters);
       gsap.ticker.remove(tick);
     };
   }, []);
@@ -253,14 +284,24 @@ const MeshBackground = () => {
         {BLOBS.map((blob, i) => (
           <div
             key={blob.id}
-            ref={(el) => (blobRefs.current[i] = el)}
-            className="absolute"
+            ref={(el) => (wrapperRefs.current[i] = el)}
+            className="absolute blob-idle-wrapper"
             style={{
               ...blob.style,
-              filter: `blur(${blob.blur}px)`,
-              willChange: "transform",
+              background: "none", // Background vai pro filho
             }}
-          />
+          >
+            <div
+              ref={(el) => (blobRefs.current[i] = el)}
+              className="w-full h-full absolute top-0 left-0"
+              style={{
+                background: blob.style.background,
+                filter: `blur(${blob.blur}px)`,
+                willChange: "transform",
+                borderRadius: blob.style.borderRadius,
+              }}
+            />
+          </div>
         ))}
       </div>
     </>

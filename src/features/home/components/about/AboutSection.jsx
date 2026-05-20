@@ -97,6 +97,7 @@ const AboutMeSection = ({ className }) => {
       const split = SplitText.create(paragraphs, {
         type: "words , chars, lines",
         linesClass: "overflow-hidden",
+        wordsClass: "word", // estou aplicando a classe "word" a cada span de palavra
       });
       // const chars = split.words; // Array de spans de letras
 
@@ -157,7 +158,10 @@ const AboutMeSection = ({ className }) => {
 
         <div className="grid grid-cols-4 md:grid-cols-12 place-items-center  w-full px-6 sm:px-8 py-12 gap-8 md:gap-4">
           <div className="col-span-4 md:col-span-6 space-y-12 md:space-y-6">
-            <div ref={textRef} className="space-y-4 md:space-y-6">
+            <div
+              ref={textRef}
+              className="space-y-4 md:space-y-6 [&_.word]:inline [&_.word]:whitespace-normal"
+            >
               <p>
                 Sou desenvolvedora com foco em front-end e base em C#,
                 apaixonada por transformar ideias em interfaces funcionais,
