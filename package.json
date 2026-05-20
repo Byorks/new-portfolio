@@ -7,7 +7,8 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "deploy:preview": "pnpm run build && firebase hosting:channel:deploy minha-preview-atual --expires 1d"
   },
   "dependencies": {
     "@gsap/react": "^2.1.2",

@@ -98,6 +98,7 @@ const AboutMeSection = ({ className }) => {
         type: "words , chars, lines",
         linesClass: "overflow-hidden",
         wordsClass: "word", // estou aplicando a classe "word" a cada span de palavra
+        wordDelimiter: " ",
       });
       // const chars = split.words; // Array de spans de letras
 
