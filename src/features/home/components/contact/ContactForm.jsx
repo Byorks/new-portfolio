@@ -1,6 +1,8 @@
 import { contactFormSchema } from "../../../schemas/contactForm.schema";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm, Watch } from "react-hook-form";
+import { useForm } from "react-hook-form";
+import { db } from "../../../../config/firebase";
+import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 
 export const ContactForm = () => {
   const {
@@ -16,11 +18,16 @@ export const ContactForm = () => {
   const messageContent = watch("message");
 
   const onSubmit = async (data) => {
-    console.log("Envia dados:" + data);
-    // Simulando envio
-    await new Promise((resolve) => setTimeout(resolve, 2000));
-    console.log("Ticket enviado:", data);
-    alert("Mensagem enviada com sucesso!");
+    try {
+      await addDoc(collection(db, "messages"), {
+        ...data,
+        timestamp: serverTimestamp(), //  timestamp do servidor
+      });
+      alert("Mensagem enviada com sucesso!");
+    } catch (error) {
+      console.error("Erro ao enviar mensagem:", error);
+      alert("Erro ao enviar mensagem. Tente novamente mais tarde.");
+    }
   };
 
   return (

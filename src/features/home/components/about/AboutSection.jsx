@@ -90,55 +90,58 @@ const AboutMeSection = ({ className }) => {
 
   const [img, setImg] = useState(IMGS[0]);
   // Animações
-  useGSAP(
-    () => {
-      const paragraphs = textRef.current.querySelectorAll("p");
+  useGSAP(() => {
+    const paragraphs = textRef.current.querySelectorAll("p");
 
-      const split = SplitText.create(paragraphs, {
-        type: "words , chars, lines",
-        linesClass: "overflow-hidden",
-        wordsClass: "word", // estou aplicando a classe "word" a cada span de palavra
-        wordDelimiter: " ",
-      });
-      // const chars = split.words; // Array de spans de letras
+    document.fonts.ready.then(
+      () => {
+        const split = SplitText.create(paragraphs, {
+          type: "words , chars, lines",
+          linesClass: "overflow-hidden",
+          wordsClass: "word", // estou aplicando a classe "word" a cada span de palavra
+          wordDelimiter: " ",
+        });
 
-      // Configuração da timeline gsap
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: "top 80%",
-          end: "bottom",
-          // toggleActions: "restart pause resume pause",
-          markers: false,
-        },
-      });
+        // const chars = split.words; // Array de spans de letras
 
-      tl.to(lineRef.current, {
-        scaleX: 1,
-        duration: 1,
-        ease: "power2.out",
-      }).to(
-        verticalRef.current,
-        {
-          scaleY: 1,
-          duration: 0.6,
+        // Configuração da timeline gsap
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: containerRef.current,
+            start: "top 80%",
+            end: "bottom",
+            // toggleActions: "restart pause resume pause",
+            markers: false,
+          },
+        });
+
+        tl.to(lineRef.current, {
+          scaleX: 1,
+          duration: 1,
           ease: "power2.out",
-        },
-        "<",
-      );
+        }).to(
+          verticalRef.current,
+          {
+            scaleY: 1,
+            duration: 0.6,
+            ease: "power2.out",
+          },
+          "<",
+        );
 
-      scrambleTech(tl, titleRef.current, "Sobre mim");
+        scrambleTech(tl, titleRef.current, "Sobre mim");
 
-      tl.from(split.words, {
-        duration: 0.8,
-        filter: "blur(20px)",
-        autoAlpha: 0, // fade in from opacity: 0 and visibility: hidden
-        stagger: 0.05, // 0.05 seconds between each
-        ease: "power2.out",
-      });
-    },
-    { scope: containerRef },
-  );
+        tl.from(split.words, {
+          duration: 0.8,
+          filter: "blur(20px)",
+          autoAlpha: 0, // fade in from opacity: 0 and visibility: hidden
+          stagger: 0.05, // 0.05 seconds between each
+          ease: "power2.out",
+        });
+      },
+      { scope: containerRef },
+    );
+  });
 
   return (
     <section id="about" ref={containerRef} className="min-h-dvh w-full py-4">
